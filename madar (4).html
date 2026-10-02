@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>هاب‌کام | راهنمای کامل ورود به دنیای کامپیوتر</title>
+<meta name="description" content="هاب‌کام، مرجع فارسی آموزش کامپیوتر از صفر تا پیشرفته؛ آشنایی با مبانی، مقایسه رشته‌های کامپیوتری و دریافت مشاوره برای انتخاب مسیر شغلی.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   هاب‌کام — Hub for Computer World
+   Stylesheet
+   ========================================================= */
+
+:root{
+  --bg:            #05070d;
+  --bg-elevated:   #0a1020;
+  --bg-card:       #0d1428;
+  --bg-card-hover: #101a35;
+  --line:          rgba(120,160,220,0.14);
+  --line-strong:   rgba(120,180,255,0.32);
+  --blue-deep:     #0e1c42;
+  --blue-mid:      #1f4fd6;
+  --cyan:          #49d3ff;
+  --cyan-soft:     rgba(73,211,255,0.14);
+  --violet:        #7c6bff;
+  --text:          #eaf0fb;
+  --text-dim:      #9aa8c7;
+  --text-faint:    #5f6d8c;
+  --danger:        #ff6b7a;
+  --ok:            #4ee6a0;
+  --radius-sm:     10px;
+  --radius-md:     16px;
+  --radius-lg:     26px;
+  --maxw:          1180px;
+  --shadow-glow:   0 0 0 1px var(--line), 0 20px 60px -25px rgba(31,79,214,.55);
+  --ff-body: 'Vazirmatn', 'Tahoma', sans-serif;
+  --ff-display: 'Lalezar', 'Vazirmatn', 'Tahoma', sans-serif;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+html,body{ margin:0; padding:0; }
+
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ff-body);
+  font-weight: 400;
+  line-height: 1.85;
+  direction: rtl;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before{
+  content:"";
+  position: fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(60vw 60vw at 85% -10%, rgba(31,79,214,.22), transparent 60%),
+    radial-gradient(50vw 50vw at -10% 30%, rgba(73,211,255,.10), transparent 60%),
+    radial-gradient(40vw 40vw at 50% 110%, rgba(124,107,255,.12), transparent 60%),
+    var(--bg);
+}
+
+body::after{
+  content:"";
+  position: fixed;
+  inset:0;
+  z-index:-1;
+  opacity:.5;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(120% 60% at 50% 0%, #000 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(120% 60% at 50% 0%, #000 0%, transparent 75%);
+}
+
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; }
+ul{ list-style:none; margin:0; padding:0; }
+input,textarea,select{ font-family:inherit; }
+
+::selection{ background: var(--cyan-soft); color:var(--cyan); }
+
+.wrap{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- Typography ---------- */
+h1,h2,h3,h4{
+  font-family: var(--ff-body);
+  font-weight: 800;
+  letter-spacing: -.01em;
+  margin: 0;
+  color: var(--text);
+}
+h1,h2{
+  font-family: var(--ff-display);
+  letter-spacing: 0;
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color: var(--cyan);
+  font-weight: 600;
+  font-size: .95rem;
+  margin-bottom: 14px;
+}
+.eyebrow::before{
+  content:"";
+  width:22px; height:2px;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+  border-radius: 2px;
+}
+.section-head{
+  max-width: 680px;
+  margin-bottom: 48px;
+}
+.section-head h2{
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  line-height:1.35;
+}
+.section-head p{
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  margin-top: 14px;
+}
+.section-head.center{ margin-inline:auto; text-align:center; }
+
+section{ position:relative; padding: 96px 0; }
+section.tight{ padding: 64px 0; }
+
+.divider{
+  height:1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-weight:700;
+  font-size: .98rem;
+  border: 1px solid transparent;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+  white-space: nowrap;
+}
+.btn:active{ transform: scale(.97); }
+.btn-primary{
+  background: linear-gradient(135deg, var(--blue-mid), var(--cyan));
+  color:#04101f;
+  box-shadow: 0 12px 34px -12px rgba(73,211,255,.65);
+}
+.btn-primary:hover{ box-shadow: 0 16px 40px -10px rgba(73,211,255,.85); transform: translateY(-2px); }
+.btn-ghost{
+  background: rgba(255,255,255,.03);
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+.btn-ghost:hover{ background: rgba(73,211,255,.08); border-color: var(--cyan); }
+.btn-sm{ padding: 9px 16px; font-size:.85rem; border-radius: 10px; }
+.btn-block{ width:100%; }
+.btn-danger{ background: rgba(255,107,122,.12); color: var(--danger); border-color: rgba(255,107,122,.4); }
+.btn[disabled]{ opacity:.5; cursor:not-allowed; }
+
+/* ---------- Header ---------- */
+#site-header{
+  position: sticky;
+  top:0;
+  z-index: 500;
+  backdrop-filter: blur(14px);
+  background: rgba(5,7,13,.72);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 16px 28px;
+  max-width: var(--maxw);
+  margin:0 auto;
+  gap: 20px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family: var(--ff-display);
+  font-weight:800;
+  font-size:1.5rem;
+  letter-spacing:.01em;
+}
+.brand small{
+  font-family: var(--ff-body);
+}
+.brand-mark{
+  width:38px; height:38px;
+  border-radius: 11px;
+  background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCAHgAeADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD4VooorsOcKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACii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');
+  background-size: cover;
+  background-position: center;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow: 0 0 22px -4px rgba(73,211,255,.55);
+  flex-shrink:0;
+  overflow:hidden;
+}
+.brand-mark span{ display:none; }
+.brand small{
+  display:block;
+  font-size: .68rem;
+  font-weight:500;
+  color: var(--text-faint);
+  margin-top: 1px;
+}
+
+.main-nav{ display:flex; align-items:center; gap: 4px; }
+.main-nav a{
+  padding: 10px 14px;
+  font-size: .95rem;
+  color: var(--text-dim);
+  border-radius: 8px;
+  transition: color .15s ease, background .15s ease;
+}
+.main-nav a:hover{ color: var(--text); background: rgba(255,255,255,.04); }
+
+.header-actions{ display:flex; align-items:center; gap:10px; }
+.nav-toggle{
+  display:none;
+  width:42px; height:42px;
+  border-radius:10px;
+  background: rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  align-items:center; justify-content:center;
+  flex-direction:column; gap:5px;
+}
+.nav-toggle span{ width:18px; height:2px; background:var(--text); border-radius:2px; }
+
+/* ---------- Hero ---------- */
+.hero{
+  padding: 100px 0 90px;
+  position:relative;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 56px;
+  align-items:center;
+}
+.hero-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  padding: 8px 16px;
+  border-radius:999px;
+  background: rgba(73,211,255,.08);
+  border:1px solid rgba(73,211,255,.3);
+  color: var(--cyan);
+  font-size:.88rem;
+  font-weight:600;
+  margin-bottom:26px;
+}
+.hero-dot{ width:7px;height:7px;border-radius:50%; background:var(--cyan); box-shadow:0 0 10px 2px var(--cyan); }
+.hero h1{
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+  line-height:1.28;
+  background: linear-gradient(95deg, #fff 30%, var(--cyan) 90%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero p.lead{
+  margin-top: 24px;
+  font-size: 1.15rem;
+  color: var(--text-dim);
+  max-width: 560px;
+}
+.hero-cta{
+  margin-top: 38px;
+  display:flex;
+  flex-wrap:wrap;
+  gap: 14px;
+}
+.hero-stats{
+  margin-top: 52px;
+  display:flex;
+  gap: 36px;
+  flex-wrap:wrap;
+}
+.hero-stat b{
+  display:block;
+  font-size: 1.7rem;
+  font-weight:800;
+  color: var(--text);
+}
+.hero-stat span{
+  font-size:.85rem;
+  color: var(--text-faint);
+}
+
+/* Hero visual: layered orbit / circuit graphic */
+.hero-visual{
+  position:relative;
+  aspect-ratio: 1/1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.orbit-ring{
+  position:absolute;
+  border:1px solid var(--line-strong);
+  border-radius:50%;
+}
+.orbit-ring.r1{ inset:0; animation: spin 40s linear infinite; }
+.orbit-ring.r2{ inset:12%; border-style:dashed; opacity:.5; animation: spin 60s linear infinite reverse; }
+.orbit-ring.r3{ inset:26%; opacity:.35; }
+@keyframes spin{ to{ transform: rotate(360deg); } }
+.orbit-core{
+  position:relative;
+  width: 42%;
+  aspect-ratio:1/1;
+  border-radius:50%;
+  background: radial-gradient(circle at 35% 30%, rgba(73,211,255,.5), rgba(31,79,214,.15) 60%, transparent 75%);
+  box-shadow: 0 0 90px 10px rgba(73,211,255,.35);
+  display:flex;align-items:center;justify-content:center;
+}
+.orbit-core svg{ width:52%; height:52%; opacity:.9; }
+.orbit-node{
+  position:absolute;
+  width:46px;height:46px;
+  border-radius:12px;
+  background: var(--bg-card);
+  border:1px solid var(--line-strong);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;
+  box-shadow: 0 10px 26px -10px rgba(0,0,0,.6);
+}
+.orbit-node.n1{ top:2%; right:14%; }
+.orbit-node.n2{ top:38%; left:0%; }
+.orbit-node.n3{ bottom:6%; right:26%; }
+.orbit-node.n4{ bottom:22%; left:10%; }
+
+@media (prefers-reduced-motion: reduce){
+  .orbit-ring.r1, .orbit-ring.r2{ animation:none; }
+}
+
+/* ---------- Fundamentals ---------- */
+.fund-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px,1fr));
+  gap: 18px;
+}
+.fund-card{
+  background: var(--bg-card);
+  border:1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color .2s ease, transform .2s ease, background .2s ease;
+  cursor:pointer;
+  display:flex; flex-direction:column;
+}
+.fund-card:hover{
+  border-color: var(--line-strong);
+  transform: translateY(-4px);
+  background: var(--bg-card-hover);
+}
+.fund-media{
+  height: 128px;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(73,211,255,.18), rgba(124,107,255,.14));
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.fund-icon-fallback{ font-size:2.1rem; filter: drop-shadow(0 6px 16px rgba(0,0,0,.35)); }
+.fund-body{ padding: 20px 22px 24px; }
+.fund-card h3{ font-size:1.08rem; margin-bottom:8px; }
+.fund-card p{
+  color: var(--text-dim);
+  font-size:.92rem;
+  margin:0;
+}
+.ask-ai-btn{ margin-top:14px; width:100%; }
+
+/* ---------- Fields ---------- */
+.fields-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px,1fr));
+  gap: 22px;
+}
+.field-card{
+  background: linear-gradient(180deg, var(--bg-card), var(--bg-elevated));
+  border:1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.field-card:hover{
+  transform: translateY(-6px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-glow);
+}
+.field-media{
+  height: 150px;
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+  background: radial-gradient(120% 140% at 20% 0%, var(--field-c1,#1f4fd6) 0%, transparent 60%),
+              radial-gradient(120% 140% at 90% 100%, var(--field-c2,#49d3ff) 0%, transparent 55%),
+              var(--blue-deep);
+  border-bottom: 1px solid var(--line);
+}
+.field-media .field-emoji{ font-size: 2.6rem; filter: drop-shadow(0 6px 18px rgba(0,0,0,.4)); }
+.field-media .field-icon-svg{ width:64px; height:64px; color:#fff; filter: drop-shadow(0 6px 18px rgba(0,0,0,.4)); }
+.field-body{ padding: 24px; display:flex; flex-direction:column; gap:14px; flex:1; }
+.field-body h3{ font-size:1.2rem; }
+.field-body > p{ color: var(--text-dim); font-size:.93rem; margin:0; }
+.field-tag{
+  align-self:flex-start;
+  font-size:.76rem;
+  font-weight:700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--cyan-soft);
+  color: var(--cyan);
+  border: 1px solid rgba(73,211,255,.35);
+}
+.field-apps{
+  font-size:.85rem;
+  color: var(--text-faint);
+  border-top: 1px dashed var(--line);
+  padding-top: 12px;
+}
+.field-apps b{ color: var(--text-dim); font-weight:600; }
+.field-body .btn{ margin-top:auto; align-self:flex-start; }
+
+/* ---------- Modal ---------- */
+.modal-overlay{
+  position:fixed; inset:0; z-index:900;
+  background: rgba(3,5,10,.72);
+  backdrop-filter: blur(6px);
+  display:none;
+  align-items:center; justify-content:center;
+  padding: 24px;
+}
+.modal-overlay.open{ display:flex; }
+.modal-box{
+  width:100%; max-width: 620px;
+  max-height: 86vh;
+  overflow-y:auto;
+  background: var(--bg-elevated);
+  border:1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  padding: 34px;
+  position:relative;
+  box-shadow: 0 40px 90px -30px rgba(0,0,0,.8);
+}
+.modal-close{
+  position:absolute; top:18px; left:18px;
+  width:34px;height:34px;
+  border-radius:50%;
+  background: rgba(255,255,255,.06);
+  border:1px solid var(--line);
+  color:var(--text-dim);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+}
+.modal-close:hover{ color:var(--text); background:rgba(255,255,255,.1); }
+.modal-box h3{ font-size:1.4rem; margin-bottom:6px; }
+.modal-box .field-tag{ margin-bottom:16px; }
+.modal-box p{ color:var(--text-dim); }
+.modal-box .modal-section{ margin-top:18px; }
+.modal-box .modal-section h4{ font-size:.95rem; color:var(--cyan); margin-bottom:8px; }
+.modal-icon-wrap{
+  width:72px; height:72px;
+  border-radius: 18px;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom: 14px;
+  background: radial-gradient(120% 140% at 20% 0%, var(--field-c1,#1f4fd6) 0%, transparent 60%),
+              radial-gradient(120% 140% at 90% 100%, var(--field-c2,#49d3ff) 0%, transparent 55%),
+              var(--blue-deep);
+  border: 1px solid var(--line);
+}
+.modal-icon-wrap .field-icon-svg{ width:40px; height:40px; color:#fff; }
+.curriculum-list{
+  list-style:none;
+  margin:0; padding:0;
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap:10px;
+}
+.curriculum-list li{
+  counter-increment: curr-step;
+  position:relative;
+  padding: 10px 14px 10px 14px;
+  padding-inline-start: 40px;
+  border:1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,.02);
+  color: var(--text-dim);
+  font-size:.88rem;
+}
+.curriculum-list{ counter-reset: curr-step; }
+.curriculum-list li::before{
+  content: counter(curr-step);
+  position:absolute;
+  inset-inline-start: 10px;
+  top:50%; transform:translateY(-50%);
+  width:20px; height:20px;
+  border-radius:50%;
+  background: var(--cyan-soft);
+  color: var(--cyan);
+  font-size:.72rem;
+  font-weight:800;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* ---------- Quiz ---------- */
+.quiz-card{
+  background: var(--bg-card);
+  border:1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.quiz-progress{
+  display:flex; gap:6px; margin-bottom: 30px;
+}
+.quiz-progress i{
+  height:4px; flex:1; border-radius:4px;
+  background: var(--line);
+}
+.quiz-progress i.done{ background: linear-gradient(90deg, var(--blue-mid), var(--cyan)); }
+.quiz-q{ font-size:1.25rem; font-weight:700; margin-bottom: 22px; }
+.quiz-options{ display:grid; gap:12px; }
+.quiz-opt{
+  text-align:right;
+  padding: 16px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.02);
+  color: var(--text);
+  font-size:.98rem;
+  transition: border-color .15s, background .15s;
+}
+.quiz-opt:hover{ border-color: var(--cyan); background: var(--cyan-soft); }
+.quiz-nav{ display:flex; justify-content:space-between; margin-top:26px; }
+.quiz-result{ text-align:center; }
+.quiz-result .field-tag{ margin-bottom: 16px; }
+.quiz-result h3{ font-size:1.6rem; margin-bottom: 14px; }
+.quiz-result p{ color:var(--text-dim); margin-bottom: 26px; }
+
+/* ---------- Roadmap ---------- */
+.roadmap{
+  position:relative;
+  display:grid;
+  gap: 0;
+}
+.road-step{
+  display:grid;
+  grid-template-columns: 64px 1fr;
+  gap: 22px;
+  padding-bottom: 34px;
+  position:relative;
+}
+.road-step:last-child{ padding-bottom:0; }
+.road-step::before{
+  content:"";
+  position:absolute;
+  right:31px; top:52px; bottom:0;
+  width:1px;
+  background: linear-gradient(var(--line-strong), transparent);
+}
+.road-step:last-child::before{ display:none; }
+.road-num{
+  width:64px;height:64px;
+  border-radius:50%;
+  background: var(--bg-card);
+  border:1px solid var(--line-strong);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800; font-size:1.15rem; color: var(--cyan);
+  flex-shrink:0;
+}
+.road-content h4{ font-size:1.1rem; margin-bottom:6px; }
+.road-content p{ color:var(--text-dim); margin:0; font-size:.94rem; max-width:640px; }
+
+/* ---------- Consultation ---------- */
+.consult-wrap{
+  display:grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 40px;
+  align-items:start;
+}
+.consult-info h2{ font-size: clamp(1.6rem,3vw,2.2rem); margin-bottom:16px; }
+.consult-info p{ color:var(--text-dim); margin-bottom: 26px; }
+.consult-points{ display:grid; gap:16px; }
+.consult-point{ display:flex; gap:14px; align-items:flex-start; }
+.consult-point i{
+  width:34px;height:34px; flex-shrink:0;
+  border-radius:9px;
+  background: var(--cyan-soft);
+  border:1px solid rgba(73,211,255,.3);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--cyan); font-style:normal;
+}
+.consult-point div b{ display:block; font-size:.95rem; margin-bottom:2px; }
+.consult-point div span{ font-size:.85rem; color:var(--text-faint); }
+
+.form-card{
+  background: var(--bg-card);
+  border:1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+.form-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-field{ margin-bottom: 18px; }
+.form-field label{
+  display:block; font-size:.86rem; color:var(--text-dim); margin-bottom:8px; font-weight:600;
+}
+.form-field input, .form-field select, .form-field textarea{
+  width:100%;
+  padding: 13px 15px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size:.95rem;
+  outline:none;
+  transition: border-color .15s;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus{
+  border-color: var(--cyan);
+}
+.form-field textarea{ resize:vertical; min-height:110px; }
+.form-note{
+  font-size:.82rem; color:var(--text-faint); margin-top:14px; text-align:center;
+}
+.form-success{
+  display:none;
+  text-align:center;
+  padding: 30px 10px;
+}
+.form-success.show{ display:block; }
+.form-success .ok-icon{
+  width:56px;height:56px; border-radius:50%;
+  background: rgba(78,230,160,.14);
+  border:1px solid rgba(78,230,160,.4);
+  display:flex;align-items:center;justify-content:center;
+  margin: 0 auto 16px;
+  color: var(--ok); font-size:1.5rem;
+}
+
+/* ---------- Smart Advisor Chat ---------- */
+.chat-card{
+  background: var(--bg-card);
+  border:1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  display:flex; flex-direction:column;
+}
+.chat-header{
+  display:flex; align-items:center; gap:12px;
+  padding-bottom:16px;
+  margin-bottom:14px;
+  border-bottom:1px solid var(--line);
+}
+.chat-header-text{ display:flex; flex-direction:column; gap:2px; }
+.chat-header-text b{ font-size:.98rem; }
+.chat-status{ font-size:.78rem; color:var(--text-faint); display:flex; align-items:center; gap:6px; }
+.chat-status .dot{
+  width:7px; height:7px; border-radius:50%;
+  background: var(--ok);
+  box-shadow: 0 0 8px 1px rgba(78,230,160,.7);
+  display:inline-block;
+}
+.chat-window{
+  display:flex; flex-direction:column; gap:12px;
+  height: 320px;
+  overflow-y:auto;
+  padding: 4px 4px 10px;
+  margin-bottom: 14px;
+}
+.chat-msg{
+  max-width: 82%;
+  padding: 11px 15px;
+  border-radius: 14px;
+  font-size:.9rem;
+  line-height:1.7;
+  white-space: pre-line;
+}
+.chat-msg.msg-bot{
+  align-self: flex-start;
+  background: rgba(73,211,255,.1);
+  border: 1px solid rgba(73,211,255,.22);
+  border-start-start-radius: 4px;
+}
+.chat-msg.msg-user{
+  align-self: flex-end;
+  background: rgba(124,107,255,.16);
+  border: 1px solid rgba(124,107,255,.3);
+  border-start-end-radius: 4px;
+  color: var(--text);
+}
+.chat-msg.msg-typing{ color:var(--text-faint); font-style:italic; }
+.chat-input-row{
+  display:flex; gap:10px;
+}
+.chat-input-row input{
+  flex:1;
+  padding: 13px 15px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size:.92rem;
+  outline:none;
+  transition: border-color .15s;
+}
+.chat-input-row input:focus{ border-color: var(--cyan); }
+.chat-human-cta{ margin-top:16px; }
+.chat-human-form{ margin-top:14px; }
+
+/* ---------- FAQ ---------- */
+.faq-list{ max-width: 780px; margin:0 auto; display:grid; gap:12px; }
+.faq-item{
+  border:1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  overflow:hidden;
+}
+.faq-q{
+  display:flex; align-items:center; justify-content:space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  font-weight:700;
+  font-size:.98rem;
+}
+.faq-q .plus{
+  width:26px;height:26px; flex-shrink:0;
+  border-radius:50%;
+  border:1px solid var(--line-strong);
+  display:flex;align-items:center;justify-content:center;
+  transition: transform .2s;
+  color: var(--cyan);
+}
+.faq-item.open .faq-q .plus{ transform: rotate(45deg); }
+.faq-a{
+  max-height:0;
+  overflow:hidden;
+  transition: max-height .28s ease, padding .28s ease;
+  padding: 0 24px;
+  color: var(--text-dim);
+  font-size:.92rem;
+}
+.faq-item.open .faq-a{ padding: 0 24px 22px; }
+
+/* ---------- About / misc grids ---------- */
+.about-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items:center;
+}
+.mini-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  gap: 16px;
+}
+.mini-card{
+  border:1px solid var(--line);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+.mini-card b{ display:block; margin-bottom:6px; }
+.mini-card span{ color:var(--text-faint); font-size:.85rem; }
+
+.article-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+  gap:20px;
+}
+.article-card{
+  border:1px solid var(--line);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display:flex; flex-direction:column; gap:10px;
+  cursor:pointer;
+  transition: border-color .2s ease, transform .2s ease, background .2s ease;
+}
+.article-card:hover{
+  border-color: var(--line-strong);
+  transform: translateY(-4px);
+  background: var(--bg-card-hover);
+}
+.article-card .tag{ color:var(--cyan); font-size:.78rem; font-weight:700; }
+.article-card h4{ font-size:1.02rem; }
+.article-card p{ color:var(--text-dim); font-size:.88rem; margin:0; }
+.article-card .article-more{ color:var(--cyan); font-size:.82rem; font-weight:600; margin-top:auto; }
+
+/* ---------- Footer ---------- */
+footer{
+  border-top: 1px solid var(--line);
+  padding: 56px 0 28px;
+  margin-top: 60px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-col h5{ font-size:.92rem; margin-bottom:16px; color:var(--text); }
+.footer-col ul{ display:grid; gap:10px; }
+.footer-col a{ color:var(--text-dim); font-size:.9rem; }
+.footer-col a:hover{ color:var(--cyan); }
+.footer-brand p{ color:var(--text-faint); font-size:.88rem; margin-top:12px; max-width:280px; }
+.footer-bottom{
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:10px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size:.82rem;
+  color: var(--text-faint);
+}
+.footer-bottom a{ color: var(--text-faint); }
+.footer-bottom a:hover{ color: var(--cyan); }
+
+/* ---------- Admin ---------- */
+#admin-view{ display:none; min-height:100vh; }
+#admin-view.open{ display:block; }
+#public-view.hidden{ display:none; }
+
+.admin-login-wrap{
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  padding: 24px;
+}
+.admin-login-card{
+  width:100%; max-width:400px;
+  background: var(--bg-card);
+  border:1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  padding: 38px 32px;
+  text-align:center;
+}
+.admin-login-card .brand-mark{ margin:0 auto 18px; }
+.admin-login-card h2{ font-size:1.35rem; margin-bottom:8px; }
+.admin-login-card p{ color:var(--text-dim); font-size:.9rem; margin-bottom:26px; }
+.admin-error{
+  display:none;
+  color: var(--danger);
+  background: rgba(255,107,122,.1);
+  border:1px solid rgba(255,107,122,.3);
+  border-radius:10px;
+  padding:10px 14px;
+  font-size:.85rem;
+  margin-bottom:16px;
+}
+.admin-error.show{ display:block; }
+.admin-hint{ font-size:.78rem; color:var(--text-faint); margin-top:18px; }
+
+.admin-shell{ display:flex; min-height:100vh; }
+.admin-side{
+  width: 250px; flex-shrink:0;
+  background: var(--bg-elevated);
+  border-left: 1px solid var(--line);
+  padding: 24px 18px;
+  display:flex; flex-direction:column;
+  position:sticky; top:0; height:100vh;
+}
+.admin-side .brand{ padding: 6px 10px 26px; }
+.admin-nav{ display:grid; gap:4px; flex:1; }
+.admin-nav button{
+  display:flex; align-items:center; gap:10px;
+  width:100%;
+  text-align:right;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background:transparent;
+  border:1px solid transparent;
+  color: var(--text-dim);
+  font-size:.92rem;
+  font-weight:600;
+}
+.admin-nav button:hover{ background: rgba(255,255,255,.04); color:var(--text); }
+.admin-nav button.active{
+  background: var(--cyan-soft);
+  border-color: rgba(73,211,255,.35);
+  color: var(--cyan);
+}
+.admin-exit{ font-size:.85rem; color:var(--text-faint); padding:12px 14px; }
+.admin-exit:hover{ color: var(--danger); }
+
+.admin-main{ flex:1; padding: 34px 40px; max-width: 980px; }
+.admin-topbar{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom: 30px;
+}
+.admin-topbar h2{ font-size:1.5rem; }
+.admin-topbar p{ color:var(--text-faint); font-size:.85rem; margin-top:4px; }
+.admin-panel-section{ display:none; }
+.admin-panel-section.active{ display:block; }
+
+.admin-card{
+  background: var(--bg-card);
+  border:1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 26px;
+  margin-bottom: 20px;
+}
+.admin-card h3{ font-size:1.02rem; margin-bottom: 18px; }
+.admin-save-msg{
+  display:inline-flex; align-items:center; gap:8px;
+  color: var(--ok); font-size:.85rem; font-weight:600;
+  opacity:0; transition: opacity .25s;
+}
+.admin-save-msg.show{ opacity:1; }
+
+.admin-list-item{
+  display:flex; align-items:center; gap:14px;
+  padding: 14px;
+  border:1px solid var(--line);
+  border-radius: 12px;
+  margin-bottom:10px;
+  background: rgba(255,255,255,.015);
+}
+.admin-list-item .emoji{ font-size:1.4rem; display:flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:9px; flex-shrink:0; background: radial-gradient(120% 140% at 20% 0%, var(--field-c1,#1f4fd6) 0%, transparent 60%), radial-gradient(120% 140% at 90% 100%, var(--field-c2,#49d3ff) 0%, transparent 55%), var(--blue-deep); }
+.admin-list-item .emoji .field-icon-svg{ width:20px; height:20px; color:#fff; }
+.admin-list-item .info{ flex:1; min-width:0; }
+.admin-list-item .info b{ display:block; font-size:.94rem; }
+.admin-list-item .info span{ font-size:.8rem; color:var(--text-faint); }
+.admin-list-item .actions{ display:flex; gap:8px; flex-shrink:0; }
+.icon-btn{
+  width:32px;height:32px;
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  background: rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  color: var(--text-dim);
+  font-size:.9rem;
+}
+.icon-btn:hover{ color:var(--text); border-color:var(--line-strong); }
+.icon-btn.del:hover{ color:var(--danger); border-color: rgba(255,107,122,.5); }
+
+.subs-empty{ text-align:center; padding: 40px 0; color:var(--text-faint); }
+.sub-card{
+  border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin-bottom:10px;
+  background: rgba(255,255,255,.015);
+}
+.sub-card .row{ display:flex; justify-content:space-between; gap:10px; margin-bottom:8px; flex-wrap:wrap; }
+.sub-card b{ font-size:.95rem; }
+.sub-card .meta{ font-size:.78rem; color:var(--text-faint); }
+.sub-card p{ margin:0; color:var(--text-dim); font-size:.88rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px){
+  .hero-grid{ grid-template-columns:1fr; }
+  .hero-visual{ max-width:360px; margin:0 auto; order:-1; }
+  .consult-wrap{ grid-template-columns:1fr; }
+  .about-grid{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns: 1fr 1fr; }
+  .admin-side{ position:fixed; right:-260px; z-index:600; transition:right .25s; box-shadow:0 0 40px rgba(0,0,0,.5); }
+  .admin-side.open{ right:0; }
+  .admin-main{ padding: 24px 18px; }
+}
+@media (max-width: 760px){
+  .main-nav{ display:none; }
+  .nav-toggle{ display:flex; }
+  section{ padding:64px 0; }
+  .form-row{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr; }
+  .header-actions .btn-primary span.long{ display:none; }
+  .header-actions .admin-entry-link span.long{ display:none; }
+}
+@media (max-width:480px){
+  .wrap{ padding:0 18px; }
+  .quiz-card{ padding:26px 20px; }
+  .admin-main{ padding:20px 14px; }
+}
+
+/* Mobile nav drawer */
+.mobile-nav{
+  position:fixed; inset:0; z-index:700;
+  background: rgba(4,6,12,.97);
+  display:none;
+  flex-direction:column;
+  padding: 24px;
+}
+.mobile-nav.open{ display:flex; }
+.mobile-nav-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; }
+.mobile-nav a{
+  padding: 16px 6px;
+  font-size:1.15rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+}
+.mobile-nav .btn{ margin-top:24px; }
+
+/* Focus visibility for accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.reveal{ animation: rise .6s ease both; }
+@keyframes rise{ from{ opacity:0; transform: translateY(14px);} to{ opacity:1; transform:none; } }
+
+</style>
+</head>
+<body>
+
+<!-- =================== WELCOME MODAL =================== -->
+<div class="modal-overlay open" id="welcomeModal">
+  <div class="modal-box" id="welcomeModalBox" style="max-width:460px;text-align:center;">
+    <button class="modal-close" id="welcomeCloseBtn" aria-label="بستن">✕</button>
+    <div class="brand-mark" style="width:56px;height:56px;margin:0 auto 18px;"><span></span></div>
+    <h3 style="margin-bottom:10px;">به دنیای کامپیوتر خوش آمدید 👋</h3>
+    <p style="margin:0 0 22px;">هاب‌کام، مرجع فارسی شماست برای یادگیری مبانی کامپیوتر، آشنایی با رشته‌های مختلف و پیدا کردن مسیر شغلی مناسب خودتان.</p>
+    <button class="btn btn-primary btn-block" id="welcomeStartBtn">بزن بریم 🚀</button>
+  </div>
+</div>
+
+<!-- =================== PUBLIC SITE =================== -->
+<div id="public-view">
+
+  <header id="site-header">
+    <div class="header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark"><span></span></span>
+        <span>هاب‌کام<small>راهنمای ورود به دنیای کامپیوتر</small></span>
+      </a>
+      <nav class="main-nav">
+        <a href="#fundamentals">مبانی کامپیوتر</a>
+        <a href="#fields">رشته‌ها</a>
+        <a href="#quiz">مسیر مناسب من</a>
+        <a href="#roadmap">نقشه راه</a>
+        <a href="#faq">سوالات متداول</a>
+        <a href="#about">درباره ما</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#" id="adminEntryLink" class="btn btn-ghost btn-sm admin-entry-link" title="ورود ادمین">🔒<span class="long"> ورود ادمین</span></a>
+        <a href="#consultation" class="btn btn-primary btn-sm"><span class="long">مشاور</span> هوشمند</a>
+        <button class="nav-toggle" id="navToggle" aria-label="باز کردن منو">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-top">
+      <a href="#top" class="brand"><span class="brand-mark"><span></span></span><span>هاب‌کام</span></a>
+      <button class="nav-toggle" id="navClose" aria-label="بستن منو"><span style="transform:rotate(45deg)"></span></button>
+    </div>
+    <a href="#fundamentals">مبانی کامپیوتر</a>
+    <a href="#fields">رشته‌ها</a>
+    <a href="#quiz">مسیر مناسب من</a>
+    <a href="#roadmap">نقشه راه</a>
+    <a href="#faq">سوالات متداول</a>
+    <a href="#about">درباره ما</a>
+    <a href="#consultation" class="btn btn-primary btn-block">مشاور هوشمند</a>
+    <a href="#" id="adminEntryLinkMobile" class="btn btn-ghost btn-block" style="margin-top:10px;">🔒 ورود ادمین</a>
+  </div>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="hero-eyebrow"><span class="hero-dot"></span> از صفر تا مسیر شغلی</div>
+          <h1 id="heroTitle">از صفر تا انتخاب مسیر درست کامپیوتری: راهنمای کامل شما برای آینده دیجیتال</h1>
+          <p class="lead" id="heroSubtitle">مبانی کامپیوتر را قدم‌به‌قدم یاد بگیرید، رشته‌های مختلف را با هم مقایسه کنید و با اطمینان مسیر شغلی خودتان را در دنیای فناوری انتخاب کنید.</p>
+          <div class="hero-cta">
+            <a href="#fundamentals" class="btn btn-primary" id="ctaLearn">شروع یادگیری</a>
+            <a href="#fields" class="btn btn-ghost" id="ctaFields">کاوش رشته‌ها</a>
+            <a href="#quiz" class="btn btn-ghost" id="ctaQuiz">بهترین مسیر من</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><b>۷</b><span>رشته اصلی کامپیوتر</span></div>
+            <div class="hero-stat"><b>۱۰+</b><span>مفهوم پایه آموزشی</span></div>
+            <div class="hero-stat"><b>۰ تا ۱۰۰٪</b><span>مسیر از مبتدی تا حرفه‌ای</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orbit-ring r1"></div>
+          <div class="orbit-ring r2"></div>
+          <div class="orbit-ring r3"></div>
+          <div class="orbit-core">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z" stroke="#eaf6ff" stroke-width="1.4"/>
+              <path d="M9 20h6M12 17v3" stroke="#eaf6ff" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M7.5 9.5l2 2-2 2M12.5 13.5h3" stroke="#49d3ff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="orbit-node n1">💻</div>
+          <div class="orbit-node n2">🤖</div>
+          <div class="orbit-node n3">🔐</div>
+          <div class="orbit-node n4">🌐</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <!-- FUNDAMENTALS -->
+    <section id="fundamentals">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">قدم اول</div>
+          <h2>مبانی کامپیوتر را از پایه یاد بگیرید</h2>
+          <p>پیش از انتخاب رشته، باید زبان مشترک دنیای کامپیوتر را بشناسید. این بخش، ساده و کاربردی، مهم‌ترین مفاهیم پایه را برایتان توضیح می‌دهد.</p>
+        </div>
+        <div class="fund-grid" id="fundGrid"></div>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <!-- FIELDS -->
+    <section id="fields">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">رشته‌های کامپیوتر</div>
+          <h2>هفت مسیر اصلی دنیای کامپیوتر</h2>
+          <p>هر رشته دنیای متفاوتی دارد. کارت‌های زیر را بررسی کنید، کاربردهای هرکدام را ببینید و بسنجید کدام‌یک با علایق شما هم‌خوانی دارد.</p>
+        </div>
+        <div class="fields-grid" id="fieldsGrid"></div>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <!-- QUIZ -->
+    <section id="quiz">
+      <div class="wrap">
+        <div class="section-head center" style="margin-inline:auto;text-align:center;">
+          <div class="eyebrow" style="justify-content:center;">راهنمای انتخاب</div>
+          <h2>کدام رشته برای من مناسب است؟</h2>
+          <p>با پاسخ به چند سوال کوتاه، پیشنهاد اولیه‌ای برای شروع مسیر خود دریافت کنید.</p>
+        </div>
+        <div class="quiz-card" id="quizCard"></div>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <!-- ROADMAP -->
+    <section id="roadmap">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">نقشه راه</div>
+          <h2>از اولین قدم تا ورود حرفه‌ای</h2>
+          <p>یک مسیر پیشنهادی و عملی برای شروع، صرف‌نظر از این‌که کدام رشته را انتخاب کنید.</p>
+        </div>
+        <div class="roadmap" id="roadmapList"></div>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <!-- SKILLS / RESOURCES -->
+    <section class="tight">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">مهارت‌های ضروری</div>
+          <h2>مهارت‌هایی که در هر مسیری به کارتان می‌آید</h2>
+        </div>
+        <div class="mini-grid" id="skillsGrid"></div>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <!-- ARTICLES -->
+    <section class="tight">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">منابع آموزشی</div>
+          <h2>مقالات و راهنماهای تکمیلی</h2>
+        </div>
+        <div class="article-grid" id="articlesGrid"></div>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <!-- CONSULTATION -->
+    <section id="consultation">
+      <div class="wrap consult-wrap">
+        <div class="consult-info">
+          <div class="eyebrow">مشاور هوشمند</div>
+          <h2>هنوز مطمئن نیستید؟ با مشاور هوشمند چت کنید</h2>
+          <p>در باکس کنار، هرچه ذهنتان را مشغول کرده بنویسید — مثلاً «به بازی‌سازی علاقه دارم ولی نمی‌دونم از کجا شروع کنم» — تا بر اساس علایق شما، مسیر پیشنهادی و قدم‌های شروع را نشان دهد.</p>
+          <div class="consult-points">
+            <div class="consult-point"><i>۱</i><div><b>پاسخ آنی</b><span>بدون نیاز به پر کردن فرم، همین حالا بنویسید و جواب بگیرید</span></div></div>
+            <div class="consult-point"><i>۲</i><div><b>پیشنهاد مسیر و نقشه راه</b><span>بر اساس چیزی که می‌نویسید، رشته و قدم‌های شروع پیشنهاد می‌شود</span></div></div>
+            <div class="consult-point"><i>۳</i><div><b>امکان تماس با مشاور انسانی</b><span>اگر نیاز به بررسی دقیق‌تر داشتید، درخواست تماس هم ثبت کنید</span></div></div>
+          </div>
+        </div>
+        <div class="chat-card" id="advisorCard">
+          <div class="chat-header">
+            <div class="brand-mark" style="width:34px;height:34px;flex-shrink:0;"><span></span></div>
+            <div class="chat-header-text">
+              <b>مشاور هوشمند هاب‌کام</b>
+              <span class="chat-status"><i class="dot"></i> آماده پاسخ‌گویی</span>
+            </div>
+          </div>
+          <div class="chat-window" id="chatWindow"></div>
+          <form id="chatForm" class="chat-input-row">
+            <input type="text" id="chatInput" placeholder="مثلاً: به بازی‌سازی علاقه دارم، از کجا شروع کنم؟" autocomplete="off" required>
+            <button type="submit" class="btn btn-primary" id="chatSendBtn">ارسال</button>
+          </form>
+          <p class="form-note">این دستیار بر پایه اطلاعات همین سایت و بدون اتصال به سرویس هوش مصنوعی بیرونی پاسخ می‌دهد؛ برای راهنمایی اولیه و شناخت مسیر مناسب است.</p>
+
+          <div class="chat-human-cta" id="chatHumanCta">
+            <button type="button" class="btn btn-ghost btn-sm btn-block" id="chatHumanBtn">می‌خواهید یک مشاور انسانی هم باهاتان تماس بگیرد؟</button>
+            <div class="chat-human-form" id="chatHumanForm" style="display:none;">
+              <div class="form-row">
+                <div class="form-field"><label for="cName">نام و نام خانوادگی</label><input type="text" id="cName" required placeholder="مثلاً علی محمدی"></div>
+                <div class="form-field"><label for="cContact">شماره تماس یا ایمیل</label><input type="text" id="cContact" required placeholder="۰۹xxxxxxxxx یا email@example.com"></div>
+              </div>
+              <button type="button" class="btn btn-primary btn-block" id="chatHumanSubmitBtn">ارسال درخواست تماس</button>
+            </div>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <div class="ok-icon">✓</div>
+            <h3>درخواست شما ثبت شد</h3>
+            <p>درخواست شما همراه با خلاصه گفت‌وگویتان ذخیره شد. برای اطمینان از دریافت سریع‌تر، می‌توانید همین را مستقیماً برای ما در تلگرام هم بفرستید.</p>
+            <a href="#" class="btn btn-primary" id="formMailBtn" target="_blank" rel="noopener">ارسال در تلگرام</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head center">
+          <div class="eyebrow" style="justify-content:center;">سوالات متداول</div>
+          <h2>پرسش‌های پرتکرار دانشجویان</h2>
+        </div>
+        <div class="faq-list" id="faqList"></div>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <!-- ABOUT -->
+    <section id="about" class="tight">
+      <div class="wrap about-grid">
+        <div>
+          <div class="eyebrow">درباره هاب‌کام</div>
+          <h2 style="font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.5;">مرجعی فارسی برای همه کسانی که می‌خواهند وارد دنیای کامپیوتر شوند</h2>
+          <p style="color:var(--text-dim);margin-top:16px;">هاب‌کام با هدف ساده‌کردن مسیر ورود به دنیای کامپیوتر ساخته شده؛ از اولین‌بار که اسم «برنامه‌نویسی» را می‌شنوید تا روزی که تصمیم می‌گیرید کدام رشته را به‌صورت جدی دنبال کنید. تیم ما تلاش کرده اطلاعاتی دقیق، به‌روز و قابل‌فهم در اختیارتان بگذارد؛ بدون پیچیدگی‌های غیرضروری.</p>
+        </div>
+        <div class="mini-grid">
+          <div class="mini-card"><b>🎯 هدف ما</b><span>راهنمایی شفاف برای انتخاب مسیر تحصیلی و شغلی درست</span></div>
+          <div class="mini-card"><b>📚 محتوای معتبر</b><span>محتوای ساده‌شده و قابل استفاده برای مبتدیان</span></div>
+          <div class="mini-card"><b>🧭 مشاوره انسانی</b><span>در کنار محتوای سایت، مشاوره مستقیم هم داریم</span></div>
+          <div class="mini-card"><b>🌱 رشد مستمر</b><span>محتوای سایت به‌طور مداوم به‌روزرسانی می‌شود</span></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="#top" class="brand"><span class="brand-mark"><span></span></span><span>هاب‌کام</span></a>
+          <p>مرجع فارسی آموزش کامپیوتر از صفر تا پیشرفته؛ یادگیری مبانی، مقایسه رشته‌ها و انتخاب مسیر شغلی، همه در یک‌جا.</p>
+        </div>
+        <div class="footer-col">
+          <h5>نقشه سایت</h5>
+          <ul>
+            <li><a href="#fundamentals">مبانی کامپیوتر</a></li>
+            <li><a href="#fields">رشته‌ها</a></li>
+            <li><a href="#roadmap">نقشه راه</a></li>
+            <li><a href="#faq">سوالات متداول</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>ارتباط با ما</h5>
+          <ul>
+            <li><a href="#consultation">مشاور هوشمند</a></li>
+            <li><a href="https://t.me/M_17_m17" target="_blank" rel="noopener">پیام در تلگرام</a></li>
+            <li><a href="#about">درباره ما</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© ۱۴۰۴ هاب‌کام — تمامی حقوق محفوظ است.</span>
+        <span>ساخته‌شده برای دانشجویان و علاقه‌مندان به دنیای کامپیوتر</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- =================== FIELD DETAIL MODAL =================== -->
+<div class="modal-overlay" id="fieldModal">
+  <div class="modal-box" id="fieldModalBox"></div>
+</div>
+
+<!-- =================== ARTICLE DETAIL MODAL =================== -->
+<div class="modal-overlay" id="articleModal">
+  <div class="modal-box" id="articleModalBox"></div>
+</div>
+
+<!-- =================== ADMIN VIEW =================== -->
+<div id="admin-view">
+
+  <!-- Login -->
+  <div class="admin-login-wrap" id="adminLoginWrap">
+    <div class="admin-login-card">
+      <div class="brand-mark" style="width:52px;height:52px;margin:0 auto 18px;"><span></span></div>
+      <h2>ورود به پنل مدیریت</h2>
+      <p>برای مدیریت محتوای سایت، رمز عبور را وارد کنید.</p>
+      <div class="admin-error" id="adminError">رمز عبور نادرست است.</div>
+      <form id="adminLoginForm">
+        <div class="form-field" style="text-align:right;">
+          <label for="adminPass">رمز عبور</label>
+          <input type="password" id="adminPass" required placeholder="••••••">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">ورود</button>
+      </form>
+      <p class="admin-hint">بازگشت به <a href="#top" id="backToSiteLink" style="color:var(--cyan);">صفحه اصلی سایت</a></p>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="admin-shell" id="adminShell" style="display:none;">
+    <aside class="admin-side" id="adminSide">
+      <a href="#top" class="brand" id="adminHome"><span class="brand-mark"><span></span></span><span>هاب‌کام<small>پنل مدیریت</small></span></a>
+      <nav class="admin-nav" id="adminNav">
+        <button data-panel="panel-general" class="active">🏠 محتوای عمومی</button>
+        <button data-panel="panel-fields">🧩 مدیریت رشته‌ها</button>
+        <button data-panel="panel-faq">❓ مدیریت سوالات متداول</button>
+        <button data-panel="panel-subs">📨 درخواست‌های مشاوره</button>
+        <button data-panel="panel-settings">🔒 امنیت و رمز عبور</button>
+      </nav>
+      <a href="#top" class="admin-exit" id="adminExit">↩ خروج و بازگشت به سایت</a>
+    </aside>
+
+    <div class="admin-main">
+      <div class="admin-topbar">
+        <div>
+          <h2 id="adminPanelTitle">محتوای عمومی</h2>
+          <p>تغییرات به‌صورت زنده روی سایت اعمال می‌شود.</p>
+        </div>
+        <span class="admin-save-msg" id="adminSaveMsg">✓ ذخیره شد</span>
+      </div>
+
+      <!-- General content -->
+      <section class="admin-panel-section active" id="panel-general">
+        <div class="admin-card">
+          <h3>هدر و دکمه‌ها</h3>
+          <div class="form-field"><label>عنوان اصلی هیرو</label><textarea id="adm_heroTitle"></textarea></div>
+          <div class="form-field"><label>زیرعنوان هیرو</label><textarea id="adm_heroSubtitle"></textarea></div>
+          <div class="form-row">
+            <div class="form-field"><label>متن دکمه ۱</label><input type="text" id="adm_cta1"></div>
+            <div class="form-field"><label>متن دکمه ۲</label><input type="text" id="adm_cta2"></div>
+          </div>
+          <div class="form-field"><label>متن دکمه ۳</label><input type="text" id="adm_cta3"></div>
+          <button class="btn btn-primary" id="saveGeneralBtn">ذخیره تغییرات</button>
+        </div>
+      </section>
+
+      <!-- Fields management -->
+      <section class="admin-panel-section" id="panel-fields">
+        <div class="admin-card">
+          <h3>افزودن / ویرایش رشته</h3>
+          <form id="fieldForm">
+            <input type="hidden" id="f_id">
+            <div class="form-row">
+              <div class="form-field"><label>آیکن اموجی (در صورت نبود تصویر)</label><input type="text" id="f_emoji" placeholder="💻" required></div>
+              <div class="form-field"><label>عنوان رشته</label><input type="text" id="f_title" required></div>
+            </div>
+            <div class="form-field"><label>آدرس تصویر (اختیاری — لینک مستقیم عکس)</label><input type="url" id="f_image" placeholder="https://..."></div>
+            <div class="form-field"><label>توضیح کوتاه</label><textarea id="f_desc" required></textarea></div>
+            <div class="form-field"><label>کاربردهای عملی (با کاما جدا کنید)</label><input type="text" id="f_apps" placeholder="بانکداری، اپلیکیشن موبایل، ..."></div>
+            <div class="form-field"><label>برچسب مناسب‌بودن برای</label><input type="text" id="f_suit" placeholder="مثلاً: علاقه‌مندان به منطق و ریاضی"></div>
+            <div class="form-field"><label>سرفصل کامل آموزشی (هر مورد در یک خط)</label><textarea id="f_curriculum" rows="6" placeholder="مبانی برنامه‌نویسی&#10;ساختمان داده&#10;..."></textarea></div>
+            <div style="display:flex;gap:10px;">
+              <button type="submit" class="btn btn-primary" id="fieldSubmitBtn">افزودن رشته</button>
+              <button type="button" class="btn btn-ghost" id="fieldCancelBtn" style="display:none;">انصراف از ویرایش</button>
+            </div>
+          </form>
+        </div>
+        <div class="admin-card">
+          <h3>رشته‌های موجود</h3>
+          <div id="adminFieldsList"></div>
+        </div>
+      </section>
+
+      <!-- FAQ management -->
+      <section class="admin-panel-section" id="panel-faq">
+        <div class="admin-card">
+          <h3>افزودن / ویرایش سوال</h3>
+          <form id="faqForm">
+            <input type="hidden" id="q_id">
+            <div class="form-field"><label>سوال</label><input type="text" id="q_q" required></div>
+            <div class="form-field"><label>پاسخ</label><textarea id="q_a" required></textarea></div>
+            <div style="display:flex;gap:10px;">
+              <button type="submit" class="btn btn-primary" id="faqSubmitBtn">افزودن سوال</button>
+              <button type="button" class="btn btn-ghost" id="faqCancelBtn" style="display:none;">انصراف از ویرایش</button>
+            </div>
+          </form>
+        </div>
+        <div class="admin-card">
+          <h3>سوالات موجود</h3>
+          <div id="adminFaqList"></div>
+        </div>
+      </section>
+
+      <!-- Submissions -->
+      <section class="admin-panel-section" id="panel-subs">
+        <div class="admin-card">
+          <h3>درخواست‌های مشاوره دریافت‌شده</h3>
+          <div id="adminSubsList"></div>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section class="admin-panel-section" id="panel-settings">
+        <div class="admin-card">
+          <h3>تغییر رمز عبور مدیر</h3>
+          <div class="form-field"><label>رمز عبور فعلی</label><input type="password" id="pw_current" required></div>
+          <div class="form-field"><label>رمز عبور جدید (حداقل ۸ کاراکتر)</label><input type="password" id="pw_new" required></div>
+          <div class="form-field"><label>تکرار رمز عبور جدید</label><input type="password" id="pw_confirm" required></div>
+          <div class="admin-error" id="pwError"></div>
+          <button class="btn btn-primary" id="pwSaveBtn">به‌روزرسانی رمز عبور</button>
+        </div>
+        <div class="admin-card">
+          <h3>درباره دسترسی مدیریت</h3>
+          <p style="color:var(--text-dim);font-size:.9rem;">این پنل به یک سرور واقعی وصل است: رمز عبور به‌صورت هش‌شده روی سرور نگه‌داری می‌شود و هرگز داخل کد این صفحه یا مرورگر ذخیره نمی‌شود. نشست ورود شما با یک کوکی امن (httpOnly) کنترل می‌شود که پس از ۱۲ ساعت به‌صورت خودکار منقضی می‌گردد. اگر رمز عبور را فراموش کردید، باید از طریق فایل تنظیمات سرور (`.env` و دستور `npm run seed`) آن را بازنشانی کنید — به فایل README پروژه بک‌اند مراجعه کنید.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   هاب‌کام — Application Script
+   NOTE: All content lives in the `state` object below and is
+   rendered dynamically. This keeps the public site and the
+   admin panel perfectly in sync: any change made in the admin
+   dashboard immediately re-renders the public pages.
+
+   Persistence note: content is loaded from and saved to a real
+   backend (see /api/* — server.js in the accompanying backend
+   project). Admin actions require a valid server-side session
+   (httpOnly cookie set by /api/login); nothing sensitive is
+   stored in this file or in the browser anymore.
+   ========================================================= */
+
+(function () {
+  "use strict";
+
+  /* ----------------------- STATE ----------------------- */
+  const state = {
+    isLoggedIn: false,
+    submissions: [],
+
+    hero: {
+      title: "از صفر تا انتخاب مسیر درست کامپیوتری: راهنمای کامل شما برای آینده دیجیتال",
+      subtitle: "مبانی کامپیوتر را قدم‌به‌قدم یاد بگیرید، رشته‌های مختلف را با هم مقایسه کنید و با اطمینان مسیر شغلی خودتان را در دنیای فناوری انتخاب کنید.",
+      cta1: "شروع یادگیری",
+      cta2: "کاوش رشته‌ها",
+      cta3: "بهترین مسیر من"
+    },
+
+    fundamentals: [
+      { icon: "🖥️", image: "https://cdn.phototourl.com/member/2026-09-19-4fafc491-4764-4354-900e-9c5a4e6d493b.jpg", title: "کامپیوتر چیست؟", text: "دستگاهی که داده دریافت می‌کند، طبق دستورات مشخصی آن را پردازش می‌کند و نتیجه را نمایش می‌دهد؛ از موبایل تا سرورهای بزرگ، همه بر همین اصل کار می‌کنند." },
+      { icon: "🔧", image: "https://cdn.phototourl.com/member/2026-09-19-ec22c00d-cc7d-4a94-978c-cf846ba0096d.jpg", title: "سخت‌افزار چیست؟", text: "بخش فیزیکی و قابل‌لمس کامپیوتر مثل پردازنده (CPU)، حافظه (RAM)، هارد و صفحه‌نمایش که وظیفه اجرای فرمان‌ها را بر عهده دارند." },
+      { icon: "🧩", image: "https://cdn.phototourl.com/member/2026-09-19-9713b211-205d-4485-89a5-74c3cdfbb61e.jpg", title: "نرم‌افزار چیست؟", text: "مجموعه دستورالعمل‌ها و برنامه‌هایی که به سخت‌افزار می‌گویند چه کاری انجام دهد؛ از مرورگر تا بازی‌ها و اپلیکیشن‌های موبایل." },
+      { icon: "⚙️", image: "https://cdn.phototourl.com/member/2026-09-19-be7c5dea-dc22-4f5e-8442-5e96a248bd33.jpg", title: "سیستم‌عامل چیست؟", text: "نرم‌افزاری میانجی بین کاربر و سخت‌افزار که منابع سیستم را مدیریت می‌کند؛ مانند ویندوز، مک‌اواس، لینوکس و اندروید." },
+      { icon: "🌐", image: "https://cdn.phototourl.com/member/2026-09-19-20aae17e-2e76-4375-b6d6-a407f0bcbbc2.jpg", title: "اینترنت چگونه کار می‌کند؟", text: "شبکه‌ای جهانی از میلیون‌ها کامپیوتر متصل به هم که با پروتکل‌های مشترک، داده را در قالب بسته‌های کوچک بین دستگاه‌ها جابه‌جا می‌کند." },
+      { icon: "👨‍💻", image: "https://cdn.phototourl.com/member/2026-09-19-60df0108-7e33-423c-9574-0a3fe8b19c71.jpg", title: "برنامه‌نویسی چیست؟", text: "نوشتن دستورالعمل‌هایی به زبانی که کامپیوتر بفهمد، تا مسئله‌ای مشخص را حل کند یا کاری را خودکار انجام دهد." },
+      { icon: "📊", image: "https://cdn.phototourl.com/member/2026-09-19-c203beae-41f1-46b6-8197-534456a7733b.png", title: "داده چیست؟", text: "هر نوع اطلاعات خام مثل عدد، متن، تصویر یا صدا که کامپیوترها آن را ذخیره، پردازش و تحلیل می‌کنند تا به دانش قابل‌استفاده تبدیل شود." },
+      { icon: "🔗", image: "https://cdn.phototourl.com/member/2026-09-19-24638f78-6f09-4576-bc07-553bb59704eb.png", title: "شبکه چیست؟", text: "اتصال دو یا چند دستگاه به هم برای اشتراک‌گذاری منابع و داده؛ از شبکه خانگی کوچک تا شبکه‌های بزرگ سازمانی و اینترنت." },
+      { icon: "🛡️", image: "https://cdn.phototourl.com/member/2026-09-19-3ff0661b-9d5b-406f-b90b-123cb16c6b7c.jpg", title: "امنیت سایبری چیست؟", text: "مجموعه روش‌ها و فناوری‌هایی برای محافظت از سیستم‌ها، شبکه‌ها و داده‌ها در برابر حملات، سرقت اطلاعات و دسترسی‌های غیرمجاز." },
+      { icon: "🤖", image: "https://cdn.phototourl.com/member/2026-09-19-8f40114e-4899-42e0-aed9-a8133bff414b.jpg", title: "هوش مصنوعی چیست؟", text: "شاخه‌ای از علوم کامپیوتر که به ماشین‌ها یاد می‌دهد از داده‌ها یاد بگیرند، الگو پیدا کنند و تصمیم بگیرند؛ مانند دستیارهای صوتی و پیشنهاد محتوا." }
+    ],
+
+    fields: [
+      {
+        id: "software-eng", emoji: "🧑‍💻", title: "مهندسی نرم‌افزار",
+        image: "https://cdn.phototourl.com/free/2026-09-18-7354c6b0-fa01-47ed-9ce5-094c056b4749.jpg",
+        desc: "قلب تپنده دنیای کامپیوتر. این رشته به طراحی، ساخت و نگه‌داری اپلیکیشن‌ها و سیستم‌های نرم‌افزاری می‌پردازد.",
+        apps: ["اپلیکیشن‌های موبایل", "سیستم‌های بانکی", "وب‌سایت‌ها و پلتفرم‌های آنلاین"],
+        suitability: "مناسب علاقه‌مندان به ساختن محصولات واقعی و کدنویسی روزمره",
+        curriculum: ["مبانی برنامه‌نویسی (متغیر، حلقه، تابع)", "ساختمان داده و الگوریتم‌ها", "برنامه‌نویسی شی‌گرا (OOP)", "الگوهای طراحی نرم‌افزار", "پایگاه‌داده و SQL", "کنترل نسخه با Git/GitHub", "تست و اشکال‌زدایی نرم‌افزار", "طراحی و توسعه API", "کار تیمی با متدولوژی Agile/Scrum", "استقرار و انتشار نرم‌افزار (Deployment)"],
+        c1: "#1f4fd6", c2: "#49d3ff"
+      },
+      {
+        id: "cs", emoji: "🧠", title: "علوم کامپیوتر",
+        image: "https://cdn.phototourl.com/free/2026-09-18-9e3ad210-854a-43ca-9616-ded5da87c9f4.jpg",
+        desc: "رشته‌ای نظری‌تر و ریاضی‌محور که نحوه کارکرد کامپیوترها، الگوریتم‌ها و روش‌های حل مسائل پیچیده را آموزش می‌دهد.",
+        apps: ["فعالیت در شرکت‌های بزرگ فناوری", "پژوهش و تحقیقات علمی", "حل مسائل پیچیده ریاضی"],
+        suitability: "مناسب علاقه‌مندان به منطق، ریاضی و تفکر تحلیلی عمیق",
+        curriculum: ["ریاضیات گسسته", "ساختمان داده‌ها و الگوریتم‌ها", "نظریه محاسبات و اتوماتا", "معماری کامپیوتر", "سیستم‌عامل", "شبکه‌های کامپیوتری", "پایگاه‌داده", "طراحی و تحلیل الگوریتم‌ها", "نظریه پیچیدگی محاسباتی", "پروژه یا مقاله پژوهشی"],
+        c1: "#7c6bff", c2: "#49d3ff"
+      },
+      {
+        id: "ai-ml", emoji: "🤖", title: "هوش مصنوعی و یادگیری ماشین",
+        image: "https://cdn.phototourl.com/free/2026-09-18-475fc257-13d2-4868-96b1-3bf6503acdba.png",
+        desc: "این رشته درباره آموزش‌دادن تفکر و یادگیری به ماشین‌هاست تا بتوانند مانند انسان تصمیم بگیرند یا الگو پیدا کنند.",
+        apps: ["چت‌بات‌ها", "تشخیص چهره", "خودروهای خودران", "تحلیل داده‌های پزشکی"],
+        suitability: "مناسب علاقه‌مندان به ریاضی، آمار و فناوری‌های آینده‌نگر",
+        curriculum: ["پایتون و کتابخانه‌های علمی (NumPy، Pandas)", "آمار و احتمال", "جبر خطی و بهینه‌سازی", "یادگیری ماشین کلاسیک (رگرسیون، دسته‌بندی)", "یادگیری عمیق و شبکه‌های عصبی", "پردازش زبان طبیعی (NLP)", "بینایی ماشین (Computer Vision)", "آشنایی با یادگیری تقویتی", "استقرار مدل‌های هوش مصنوعی", "اخلاق و مسئولیت‌پذیری در هوش مصنوعی"],
+        c1: "#49d3ff", c2: "#7c6bff"
+      },
+      {
+        id: "network-security", emoji: "🛡️", title: "شبکه و امنیت",
+        image: "https://cdn.phototourl.com/free/2026-09-18-2ded4e86-e28e-406a-b4df-1d3bdfa0ea6a.jpg",
+        desc: "این رشته درباره متصل‌کردن کامپیوترها به هم و محافظت از اطلاعات در برابر هکرها و تهدیدهای سایبری است.",
+        apps: ["پیشگیری از حملات سایبری", "حفاظت از اطلاعات بانکی", "ایمن‌سازی زیرساخت اینترنت"],
+        suitability: "مناسب علاقه‌مندان به رمزنگاری، شبکه و ذهن تحلیل‌گر امنیتی",
+        curriculum: ["مبانی شبکه‌های کامپیوتری (TCP/IP)", "سیستم‌عامل‌های لینوکس و ویندوز", "رمزنگاری و امنیت داده", "امنیت وب و اپلیکیشن", "تست نفوذ (Penetration Testing)", "تحلیل بدافزار", "مدیریت ریسک و پاسخ به حوادث", "فایروال و سیستم تشخیص نفوذ (IDS/IPS)", "امنیت ابری (Cloud Security)", "آشنایی با استانداردها و گواهینامه‌های امنیتی"],
+        c1: "#1f4fd6", c2: "#ff6b7a"
+      },
+      {
+        id: "data-science", emoji: "📈", title: "علم داده",
+        image: "https://cdn.phototourl.com/member/2026-09-18-cc52f84c-6ecc-450c-9b0e-608cbbddf45f.jpg",
+        desc: "در دنیای امروز، داده مثل طلاست. متخصصان این حوزه حجم زیادی از اطلاعات خام را تحلیل می‌کنند تا الگوهای مفید برای تصمیم‌گیری پیدا کنند.",
+        apps: ["پیش‌بینی رفتار مشتری", "تحلیل بازار سهام", "آمار و تحلیل‌های پزشکی"],
+        suitability: "مناسب علاقه‌مندان به آمار، اعداد و داستان‌گویی با داده",
+        curriculum: ["آمار و احتمال کاربردی", "پایتون/R برای تحلیل داده", "پاک‌سازی و آماده‌سازی داده", "SQL و پایگاه‌داده", "بصری‌سازی داده (Tableau, Power BI)", "یادگیری ماشین برای تحلیل داده", "داده‌کاوی (Data Mining)", "آشنایی با کلان‌داده (Big Data)", "داستان‌گویی با داده (Data Storytelling)", "پروژه عملی تحلیل داده واقعی"],
+        c1: "#4ee6a0", c2: "#1f4fd6"
+      },
+      {
+        id: "hardware", emoji: "🔩", title: "سخت‌افزار و مهندسی کامپیوتر",
+        image: "https://cdn.phototourl.com/free/2026-09-18-1ee37b7b-2b0a-49a0-afae-da76b572079a.jpg",
+        desc: "ترکیبی از الکترونیک و علوم کامپیوتر که روی قطعات فیزیکی مثل مدارها، پردازنده‌ها و اجزای داخلی کامپیوتر تمرکز دارد.",
+        apps: ["ساخت گوشی و لپ‌تاپ", "برد‌های هوشمند", "سیستم‌های نهفته (Embedded)"],
+        suitability: "مناسب علاقه‌مندان به الکترونیک، فیزیک و کار با قطعات فیزیکی",
+        curriculum: ["مدارهای الکتریکی و الکترونیک پایه", "مدارهای دیجیتال و منطقی", "معماری کامپیوتر", "زبان‌های سطح پایین (C و اسمبلی)", "سیستم‌های نهفته (Embedded Systems)", "طراحی مدار چاپی (PCB)", "میکروکنترلرها (Arduino، Raspberry Pi)", "سیستم‌عامل‌های بلادرنگ (RTOS)", "اینترنت اشیا (IoT)", "پروژه عملی سخت‌افزاری"],
+        c1: "#ffb84e", c2: "#7c6bff"
+      },
+      {
+        id: "web-dev", emoji: "🌐", title: "توسعه وب",
+        image: "https://cdn.phototourl.com/member/2026-09-18-7f8ea549-0e97-473f-8943-7e42e700a979.png",
+        desc: "شامل دو بخش است: فرانت‌اند یعنی بخش قابل‌مشاهده سایت که کاربر با آن تعامل دارد (دکمه‌ها، رنگ‌ها، چیدمان)، و بک‌اند یعنی بخش فنی و منطقی پشت سایت مثل پایگاه‌داده و سرورها.",
+        apps: ["وب‌سایت شخصی", "فروشگاه آنلاین", "پلتفرم‌های آموزشی", "سرویس‌های آنلاین"],
+        suitability: "مناسب علاقه‌مندان به طراحی بصری و همچنین منطق پشت سیستم‌ها",
+        curriculum: ["HTML و CSS", "جاوااسکریپت", "فریم‌ورک‌های فرانت‌اند (React/Vue)", "طراحی واکنش‌گرا (Responsive Design)", "توسعه بک‌اند (Node.js/PHP/Python)", "پایگاه‌داده (SQL/NoSQL)", "طراحی RESTful API و احراز هویت", "امنیت پایه وب", "استقرار و میزبانی (Deployment/Hosting)", "پروژه عملی فول‌استک"],
+        c1: "#49d3ff", c2: "#4ee6a0"
+      }
+    ],
+
+    faq: [
+      { id: 1, q: "از کجا باید شروع کنم؟", a: "بهترین شروع، یادگیری مبانی کامپیوتر و اینترنت (بخش «مبانی کامپیوتر» همین سایت) و سپس آشنایی کلی با رشته‌های مختلف است. بعد از آن می‌توانید با کوییز «کدام رشته برای من مناسب است؟» یک نقطه شروع پیدا کنید." },
+      { id: 2, q: "آیا برای ورود به رشته‌های کامپیوتری باید در ریاضی قوی باشم؟", a: "نه لزوماً برای همه رشته‌ها. رشته‌هایی مثل علوم کامپیوتر، هوش مصنوعی و علم داده به ریاضی و آمار وابسته‌ترند، اما در توسعه وب یا برخی مسیرهای نرم‌افزاری، منطق پایه و پشتکار مهم‌تر از ریاضی پیشرفته است." },
+      { id: 3, q: "کدام رشته بیشترین درآمد را دارد؟", a: "درآمد به عوامل زیادی مثل مهارت، تجربه، بازار کار محلی و بین‌المللی بستگی دارد؛ اما به‌طور کلی هوش مصنوعی، مهندسی نرم‌افزار و امنیت سایبری معمولاً از رشته‌های پردرآمد این حوزه هستند." },
+      { id: 4, q: "کدام رشته برای مبتدیان مناسب‌تر است؟", a: "توسعه وب و مبانی برنامه‌نویسی معمولاً بهترین نقطه شروع برای مبتدیان هستند، چون نتیجه کار سریع دیده می‌شود و منابع آموزشی زیادی برای آن‌ها وجود دارد." },
+      { id: 5, q: "آیا می‌توانم بدون دانشگاه وارد دنیای کامپیوتر شوم؟", a: "بله، به‌خصوص در حوزه‌های نرم‌افزار و وب، بسیاری از افراد از طریق دوره‌های آنلاین و پروژه‌های عملی وارد بازار کار شده‌اند. با این‌حال برخی مسیرها مثل تحقیقات یا برخی موقعیت‌های تخصصی، مدرک دانشگاهی را ترجیح می‌دهند." },
+      { id: 6, q: "چقدر طول می‌کشد تا حرفه‌ای شوم؟", a: "بسته به زمان و پشتکار متفاوت است؛ معمولاً ۶ تا ۱۲ ماه تمرین جدی برای رسیدن به سطح مبتدی حرفه‌ای کافی است، اما یادگیری در این حوزه یک مسیر مداوم و بی‌پایان است." }
+    ],
+
+    skills: [
+      { t: "حل مسئله", s: "توانایی تجزیه مسائل بزرگ به بخش‌های کوچک‌تر و قابل‌حل" },
+      { t: "تفکر منطقی", s: "پایه‌ای‌ترین مهارت برای برنامه‌نویسی و طراحی سیستم" },
+      { t: "ریاضیات پایه", s: "مفید برای اکثر رشته‌ها، الزامی برای برخی از آن‌ها" },
+      { t: "زبان انگلیسی فنی", s: "بیشتر منابع و مستندات دنیای کامپیوتر انگلیسی هستند" },
+      { t: "کار تیمی", s: "پروژه‌های واقعی معمولاً گروهی انجام می‌شوند" },
+      { t: "یادگیری مداوم", s: "فناوری هر روز تغییر می‌کند، یادگیری هرگز تمام نمی‌شود" },
+      { t: "مستندسازی", s: "توانایی توضیح واضح کاری که انجام داده‌اید" },
+      { t: "مدیریت زمان", s: "پیشرفت در یادگیری خودآموز به نظم نیاز دارد" }
+    ],
+
+    articles: [
+      { id: "art-1", tag: "شروع کار", title: "برنامه‌نویسی را از کجا شروع کنم؟", text: "نقشه راهی ساده برای اولین قدم‌های یادگیری کدنویسی.",
+        content: [
+          "خیلی از افراد فکر می‌کنند برای شروع برنامه‌نویسی باید همه‌چیز را از قبل بدانند؛ در حالی‌که بهترین راه، شروع با یک زبان ساده و پروژه‌های کوچک واقعی است.",
+          "برای شروع، یک زبان مانند پایتون یا جاوااسکریپت را انتخاب کنید. پایتون به‌خاطر سادگی نحوی، برای مبتدیان گزینه‌ای عالی است و جاوااسکریپت مستقیماً در مرورگر قابل اجراست.",
+          "به‌جای مطالعه صرفاً تئوری، پروژه‌های کوچک بسازید: یک ماشین‌حساب ساده، یک لیست کارها (To-Do List) یا یک بازی حدس عدد. ساختن چیزهای واقعی، یادگیری را ماندگارتر می‌کند.",
+          "برای تمرین منظم، حداقل روزی نیم تا یک ساعت کدنویسی کنید. پیوستگی از حجم زیاد اما نامنظم مطالعه، مهم‌تر است.",
+          "در نهایت، از خطا نترسید؛ خطاها بخش طبیعی و ضروری فرآیند یادگیری برنامه‌نویسی هستند و هر کدام به شما چیزی یاد می‌دهند."
+        ]
+      },
+      { id: "art-2", tag: "وب", title: "مقایسه فرانت‌اند و بک‌اند", text: "تفاوت این دو بخش از توسعه وب و این‌که کدام برای شما مناسب‌تر است.",
+        content: [
+          "توسعه وب معمولاً به دو بخش اصلی تقسیم می‌شود: فرانت‌اند (Front-end) و بک‌اند (Back-end). این دو با هم یک وب‌سایت یا اپلیکیشن کامل را می‌سازند.",
+          "فرانت‌اند بخشی از سایت است که کاربر مستقیماً با آن تعامل دارد؛ یعنی رنگ‌ها، دکمه‌ها، چیدمان صفحه و انیمیشن‌ها. زبان‌های اصلی این بخش HTML، CSS و جاوااسکریپت هستند.",
+          "بک‌اند بخش پشت‌صحنه است؛ جایی که داده‌ها ذخیره، پردازش و مدیریت می‌شوند. زبان‌هایی مثل پایتون، جاوا، PHP یا Node.js معمولاً برای این بخش استفاده می‌شوند و با پایگاه‌داده‌ها در ارتباط‌اند.",
+          "اگر به طراحی بصری و تجربه کاربری علاقه دارید، فرانت‌اند مناسب‌تر است. اگر به منطق سیستم، پایگاه‌داده و معماری نرم‌افزار علاقه‌مندید، بک‌اند را امتحان کنید.",
+          "بسیاری از توسعه‌دهندگان هر دو بخش را یاد می‌گیرند و به آن‌ها «فول‌استک» گفته می‌شود؛ مسیری که انعطاف شغلی بیشتری هم به همراه دارد."
+        ]
+      },
+      { id: "art-3", tag: "هوش مصنوعی", title: "هوش مصنوعی برای مبتدیان", text: "مفاهیم پایه یادگیری ماشین بدون پیچیدگی‌های ریاضی سنگین.",
+        content: [
+          "هوش مصنوعی (AI) به‌طور خلاصه یعنی آموزش‌دادن به ماشین‌ها برای انجام کارهایی که معمولاً به هوش انسانی نیاز دارند؛ مانند تشخیص تصویر، درک زبان یا پیش‌بینی روند داده‌ها.",
+          "یادگیری ماشین (Machine Learning) زیرشاخه‌ای از هوش مصنوعی است که در آن، مدل‌ها به‌جای برنامه‌نویسی مستقیم قوانین، از روی نمونه‌های زیاد داده الگو یاد می‌گیرند.",
+          "برای شروع، لازم نیست فوراً وارد ریاضیات پیشرفته شوید. آشنایی با پایتون، آمار پایه و کتابخانه‌هایی مثل NumPy و Pandas نقطه شروع خوبی است.",
+          "پروژه‌های ساده‌ای مثل پیش‌بینی قیمت خانه یا دسته‌بندی ایمیل‌های اسپم، راه خوبی برای درک عملی مفاهیم است، پیش از ورود به مباحث پیچیده‌تر مانند یادگیری عمیق.",
+          "این حوزه به‌سرعت در حال رشد است، پس یادگیری مداوم و دنبال‌کردن منابع به‌روز، بخش جدایی‌ناپذیر مسیر آن است."
+        ]
+      },
+      { id: "art-4", tag: "امنیت", title: "امنیت سایبری؛ چرا مهم است؟", text: "چرا امروز هر سازمانی به متخصص امنیت نیاز دارد.",
+        content: [
+          "با افزایش وابستگی زندگی روزمره و کسب‌وکارها به فناوری، حجم و شدت حملات سایبری هم به‌طور مداوم افزایش یافته است.",
+          "امنیت سایبری شامل محافظت از سیستم‌ها، شبکه‌ها و داده‌ها در برابر دسترسی غیرمجاز، سرقت اطلاعات، بدافزارها و حملاتی مانند فیشینگ و باج‌افزار است.",
+          "متخصصان این حوزه در نقش‌های مختلفی فعالیت می‌کنند: از تحلیل‌گر امنیت و تست‌نفوذ (Penetration Testing) گرفته تا مدیریت ریسک و پاسخ به حوادث امنیتی.",
+          "برای ورود به این مسیر، آشنایی با شبکه‌های کامپیوتری، سیستم‌عامل‌ها و مفاهیم پایه برنامه‌نویسی بسیار کمک‌کننده است.",
+          "چون هیچ سیستمی صد‌درصد ایمن نیست، تقاضای بازار کار برای متخصصان امنیت هر سال در حال افزایش است و این حوزه یکی از مسیرهای شغلی پایدار دنیای کامپیوتر به‌شمار می‌رود."
+        ]
+      },
+      { id: "art-5", tag: "داده", title: "علم داده در یک نگاه", text: "چگونه داده‌های خام به تصمیم‌های هوشمندانه تبدیل می‌شوند.",
+        content: [
+          "علم داده (Data Science) ترکیبی از آمار، برنامه‌نویسی و دانش تخصصی حوزه است که هدفش استخراج بینش مفید از حجم زیادی از داده‌های خام است.",
+          "یک متخصص علم داده معمولاً چهار مرحله اصلی را طی می‌کند: جمع‌آوری داده، پاک‌سازی و آماده‌سازی آن، تحلیل و مدل‌سازی، و در نهایت ارائه نتیجه به‌صورت قابل‌فهم برای تصمیم‌گیری.",
+          "ابزارهای رایج این حوزه شامل پایتون یا R برای تحلیل، SQL برای کار با پایگاه‌داده، و ابزارهایی مانند Power BI یا Tableau برای بصری‌سازی داده‌ها هستند.",
+          "این حوزه در صنایع مختلفی مانند بازاریابی، سلامت، مالی و تجارت الکترونیک کاربرد گسترده دارد؛ هرجا که تصمیم‌گیری بر پایه داده معنا پیدا کند.",
+          "برای شروع، آمار پایه و کار با Excel یا پایتون نقطه ورود خوبی است؛ پیش از ورود به مباحث پیشرفته‌تر مانند یادگیری ماشین."
+        ]
+      },
+      { id: "art-6", tag: "سخت‌افزار", title: "مسیر شغلی در سخت‌افزار", text: "آشنایی با فرصت‌های شغلی در دنیای الکترونیک و تراشه‌ها.",
+        content: [
+          "در حالی‌که بسیاری از افراد با شنیدن «دنیای کامپیوتر» فقط به نرم‌افزار فکر می‌کنند، سخت‌افزار و مهندسی کامپیوتر مسیر شغلی گسترده و پایداری است.",
+          "این حوزه ترکیبی از الکترونیک و علوم کامپیوتر است و روی طراحی و ساخت قطعات فیزیکی مانند پردازنده‌ها، مدارهای مجتمع و بردهای الکترونیکی تمرکز دارد.",
+          "فرصت‌های شغلی این حوزه شامل طراحی تراشه، سیستم‌های نهفته (Embedded Systems)، رباتیک و توسعه دستگاه‌های هوشمند (IoT) می‌شود.",
+          "برای ورود به این مسیر، آشنایی با فیزیک، مدارهای الکترونیکی و زبان‌هایی مانند C یا ++C که نزدیک به سخت‌افزار کار می‌کنند، اهمیت زیادی دارد.",
+          "با رشد روزافزون دستگاه‌های هوشمند و اینترنت اشیا، تقاضا برای متخصصان سخت‌افزار همچنان رو به افزایش است."
+        ]
+      }
+    ],
+
+    roadmap: [
+      { t: "آشنایی با مبانی کامپیوتر و اینترنت", d: "با مفاهیم پایه‌ای مثل سخت‌افزار، نرم‌افزار و اینترنت شروع کنید تا زبان مشترک این دنیا را یاد بگیرید." },
+      { t: "تقویت منطق و حل مسئله", d: "با تمرین‌های منطقی و ریاضیات پایه، ذهن خود را برای حل مسائل الگوریتمی آماده کنید." },
+      { t: "انتخاب یک مسیر اولیه", d: "با استفاده از بخش «رشته‌ها» و کوییز راهنما، یک نقطه شروع بر اساس علاقه خود انتخاب کنید." },
+      { t: "یادگیری یک مهارت عملی", d: "یک زبان برنامه‌نویسی یا مهارت پایه (مثل HTML/CSS) را به‌صورت عملی یاد بگیرید." },
+      { t: "ساخت پروژه‌های کوچک", d: "دانش خود را با ساخت پروژه‌های واقعی و کوچک تثبیت کنید؛ یادگیری از طریق عمل." },
+      { t: "ورود به دوره‌های تخصصی‌تر", d: "با دوره‌های پیشرفته‌تر یا تحصیلات دانشگاهی، مهارت‌های خود را عمیق‌تر کنید." },
+      { t: "ساخت نمونه‌کار و ورود به بازار کار", d: "با مجموعه‌ای از پروژه‌ها (Portfolio)، برای فرصت‌های شغلی یا کارآموزی اقدام کنید." }
+    ],
+
+    quiz: [
+      {
+        q: "کدام جمله بیشتر توصیف‌کننده شماست؟",
+        options: [
+          { text: "عاشق حل معما و مسائل ریاضی هستم", field: "cs" },
+          { text: "دوست دارم اپلیکیشن و نرم‌افزار بسازم", field: "software-eng" },
+          { text: "کنجکاوم بدانم ماشین‌ها چطور یاد می‌گیرند", field: "ai-ml" },
+          { text: "دوست دارم چیزها را ایمن و محافظت‌شده نگه دارم", field: "network-security" }
+        ]
+      },
+      {
+        q: "با کدام فعالیت بیشتر حال می‌کنید؟",
+        options: [
+          { text: "تحلیل جدول‌ها و اعداد برای پیدا کردن الگو", field: "data-science" },
+          { text: "طراحی ظاهر یک وب‌سایت یا اپ", field: "web-dev" },
+          { text: "باز کردن یک دستگاه و فهمیدن اجزای داخلی‌اش", field: "hardware" },
+          { text: "نوشتن کد برای حل یک مسئله", field: "software-eng" }
+        ]
+      },
+      {
+        q: "در آینده دوست دارید روی چه چیزی کار کنید؟",
+        options: [
+          { text: "ربات‌ها و سیستم‌های هوشمند", field: "ai-ml" },
+          { text: "زیرساخت اینترنت و امنیت شبکه‌ها", field: "network-security" },
+          { text: "وب‌سایت‌ها و فروشگاه‌های آنلاین", field: "web-dev" },
+          { text: "پردازنده‌ها، مدارها و قطعات الکترونیکی", field: "hardware" }
+        ]
+      },
+      {
+        q: "کدام درس مدرسه را بیشتر دوست داشتید؟",
+        options: [
+          { text: "ریاضی و منطق", field: "cs" },
+          { text: "آمار و احتمال", field: "data-science" },
+          { text: "فیزیک و الکترونیک", field: "hardware" },
+          { text: "هنر و طراحی", field: "web-dev" }
+        ]
+      },
+      {
+        q: "هدف اصلی شما از ورود به دنیای کامپیوتر چیست؟",
+        options: [
+          { text: "ساخت محصولات نرم‌افزاری واقعی", field: "software-eng" },
+          { text: "کار در شرکت‌های بزرگ فناوری و پژوهش", field: "cs" },
+          { text: "کمک به امنیت اطلاعات افراد و سازمان‌ها", field: "network-security" },
+          { text: "کشف الگو از داده‌ها برای تصمیم‌گیری بهتر", field: "data-science" }
+        ]
+      }
+    ]
+  };
+
+  function uid() { return Date.now() + Math.floor(Math.random() * 1000); }
+
+  /* ----------------------- HELPERS ----------------------- */
+  const $ = (sel, ctx) => (ctx || document).querySelector(sel);
+  const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
+  const esc = (str) => String(str == null ? "" : str)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  function findField(id) { return state.fields.find(f => f.id === id); }
+
+  /* ----------------------- FIELD ICONS (custom inline SVG, no external images) ----------------------- */
+  const FIELD_ICONS = {
+    "software-eng": `<rect x="10" y="14" width="44" height="28" rx="3"/><path d="M6 48h52l-4 6H10z"/><path d="M24 24l-6 6 6 6M40 24l6 6-6 6"/>`,
+    "cs": `<circle cx="32" cy="12" r="6"/><circle cx="14" cy="40" r="6"/><circle cx="50" cy="40" r="6"/><circle cx="32" cy="55" r="5"/><path d="M28 17l-10 18M36 17l10 18M20 45.5l8 5.5M44 45.5l-8 5.5"/>`,
+    "ai-ml": `<rect x="16" y="20" width="32" height="26" rx="6"/><circle cx="26" cy="33" r="3" fill="currentColor" stroke="none"/><circle cx="38" cy="33" r="3" fill="currentColor" stroke="none"/><path d="M32 20v-8M24 12h16M12 30h4M48 30h4M12 38h4M48 38h4"/>`,
+    "network-security": `<path d="M32 8l20 7v15c0 14-9 21-20 26-11-5-20-12-20-26V15z"/><rect x="24" y="30" width="16" height="12" rx="2"/><path d="M27 30v-5a5 5 0 0110 0v5"/>`,
+    "data-science": `<path d="M10 50h44"/><rect x="16" y="34" width="7" height="16"/><rect x="29" y="24" width="7" height="26"/><rect x="42" y="14" width="7" height="36"/><path d="M14 30l11-9 10 6 15-15"/>`,
+    "hardware": `<rect x="20" y="20" width="24" height="24" rx="3"/><path d="M28 20v-8M36 20v-8M28 44v8M36 44v8M20 28h-8M20 36h-8M44 28h8M44 36h8"/><rect x="27" y="27" width="10" height="10" rx="1"/>`,
+    "web-dev": `<rect x="8" y="12" width="48" height="38" rx="4"/><path d="M8 22h48"/><circle cx="15" cy="17" r="1.4" fill="currentColor" stroke="none"/><circle cx="20" cy="17" r="1.4" fill="currentColor" stroke="none"/><circle cx="25" cy="17" r="1.4" fill="currentColor" stroke="none"/><path d="M22 32l-6 6 6 6M36 32l6 6-6 6M30 30l-4 16"/>`
+  };
+  function fieldIcon(f) {
+    const inner = FIELD_ICONS[f.id];
+    if (inner) {
+      return `<svg class="field-icon-svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
+    }
+    return `<span class="field-emoji">${esc(f.emoji || "💡")}</span>`;
+  }
+  function mediaBgStyle(url) {
+    if (!url) return "";
+    const safeUrl = String(url).replace(/'/g, "%27").replace(/"/g, "%22");
+    return `background-image:linear-gradient(180deg, rgba(3,7,18,.05), rgba(3,7,18,.45)), url('${safeUrl}');background-size:cover;background-position:center;`;
+  }
+  function fieldMediaStyle(f) { return mediaBgStyle(f.image); }
+  function fieldMediaContent(f) { return f.image ? "" : fieldIcon(f); }
+
+  /* ----------------------- PERSISTENCE (real backend API) -----------------------
+     The site now talks to a real server (see /api/*) instead of the browser's
+     localStorage. Content is public-readable; saving requires an admin session
+     (httpOnly cookie set by /api/login) enforced by the server itself.
+     ------------------------------------------------------------------------------- */
+  const CONTENT_KEYS = ["hero", "fundamentals", "fields", "faq", "skills", "articles", "roadmap", "quiz"];
+
+  async function saveState() {
+    const payload = {};
+    CONTENT_KEYS.forEach(k => { payload[k] = state[k]; });
+    try {
+      const res = await fetch("/api/content", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        alert("ذخیره‌سازی روی سرور انجام نشد" + (data.error ? ": " + data.error : "") + ". اگر نشست شما منقضی شده، دوباره وارد پنل شوید.");
+      }
+    } catch (e) {
+      alert("ارتباط با سرور برقرار نشد. اتصال اینترنت یا آدرس سرور را بررسی کنید.");
+    }
+  }
+
+  async function loadState() {
+    try {
+      const res = await fetch("/api/content");
+      if (res.ok) {
+        const data = await res.json();
+        Object.keys(data).forEach(key => { state[key] = data[key]; });
+      }
+    } catch (e) { /* offline: keep the built-in default content already in `state` */ }
+  }
+
+  async function fetchSubmissions() {
+    try {
+      const res = await fetch("/api/submissions", { credentials: "include" });
+      if (res.ok) {
+        state.submissions = await res.json();
+      }
+    } catch (e) { /* leave state.submissions as-is */ }
+  }
+
+  /* ----------------------- RENDER: HERO ----------------------- */
+  function renderHero() {
+    $("#heroTitle").textContent = state.hero.title;
+    $("#heroSubtitle").textContent = state.hero.subtitle;
+    $("#ctaLearn").textContent = state.hero.cta1;
+    $("#ctaFields").textContent = state.hero.cta2;
+    $("#ctaQuiz").textContent = state.hero.cta3;
+  }
+
+  /* ----------------------- RENDER: FUNDAMENTALS ----------------------- */
+  function renderFundamentals() {
+    const grid = $("#fundGrid");
+    grid.innerHTML = state.fundamentals.map(f => `
+      <div class="fund-card">
+        <div class="fund-media" style="${mediaBgStyle(f.image)}" role="img" aria-label="${esc(f.title)}">
+          ${f.image ? "" : `<span class="fund-icon-fallback">${esc(f.icon)}</span>`}
+        </div>
+        <div class="fund-body">
+          <h3>${esc(f.title)}</h3>
+          <p>${esc(f.text)}</p>
+          <button type="button" class="btn btn-ghost btn-sm ask-ai-btn" data-ask-topic="${esc(f.title.replace(/[؟?]/g, "").trim())}">🤖 از دستیار هوشمند بپرس</button>
+        </div>
+      </div>
+    `).join("");
+    $$("[data-ask-topic]", grid).forEach(btn => {
+      btn.addEventListener("click", () => {
+        const topic = btn.getAttribute("data-ask-topic");
+        const target = document.getElementById("consultation");
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        setTimeout(() => askAdvisor(topic + " را برایم توضیح بده"), 450);
+      });
+    });
+  }
+
+  /* ----------------------- RENDER: FIELDS ----------------------- */
+  function renderFields() {
+    const grid = $("#fieldsGrid");
+    grid.innerHTML = state.fields.map(f => `
+      <div class="field-card">
+        <div class="field-media" style="--field-c1:${f.c1};--field-c2:${f.c2};${fieldMediaStyle(f)}" role="img" aria-label="${esc(f.title)}">
+          ${fieldMediaContent(f)}
+        </div>
+        <div class="field-body">
+          <h3>${esc(f.title)}</h3>
+          <p>${esc(f.desc)}</p>
+          <span class="field-tag">${esc(f.suitability)}</span>
+          <div class="field-apps"><b>کاربردها:</b> ${f.apps.map(esc).join("، ")}</div>
+          <button class="btn btn-ghost btn-sm" data-open-field="${f.id}">بیشتر بدانید</button>
+        </div>
+      </div>
+    `).join("");
+
+    $$("[data-open-field]", grid).forEach(btn => {
+      btn.addEventListener("click", () => openFieldModal(btn.getAttribute("data-open-field")));
+    });
+  }
+
+  /* ----------------------- FIELD MODAL ----------------------- */
+  function openFieldModal(id) {
+    const f = findField(id);
+    if (!f) return;
+    const box = $("#fieldModalBox");
+    box.innerHTML = `
+      <button class="modal-close" id="modalCloseBtn" aria-label="بستن">✕</button>
+      <div class="modal-icon-wrap" style="--field-c1:${f.c1};--field-c2:${f.c2};${fieldMediaStyle(f)}" role="img" aria-label="${esc(f.title)}">${fieldMediaContent(f)}</div>
+      <h3>${esc(f.title)}</h3>
+      <span class="field-tag">${esc(f.suitability)}</span>
+      <p>${esc(f.desc)}</p>
+      <div class="modal-section">
+        <h4>کاربردهای عملی</h4>
+        <p>${f.apps.map(esc).join("، ")}</p>
+      </div>
+      ${f.curriculum && f.curriculum.length ? `
+      <div class="modal-section">
+        <h4>سرفصل کامل آموزشی</h4>
+        <ol class="curriculum-list">
+          ${f.curriculum.map(c => `<li>${esc(c)}</li>`).join("")}
+        </ol>
+      </div>` : ""}
+      <div class="modal-section">
+        <a href="#quiz" class="btn btn-primary btn-sm" id="modalQuizLink">آزمون تناسب مسیر را انجام دهید</a>
+        <a href="#consultation" class="btn btn-ghost btn-sm" id="modalConsultLink" data-field-title="${esc(f.title)}">پرسیدن از مشاور هوشمند</a>
+      </div>
+    `;
+    $("#fieldModal").classList.add("open");
+    $("#modalCloseBtn").addEventListener("click", closeFieldModal);
+    $("#modalQuizLink").addEventListener("click", closeFieldModal);
+    $("#modalConsultLink").addEventListener("click", () => {
+      closeFieldModal();
+      const input = $("#chatInput");
+      if (input) input.value = "می‌خواهم درباره رشته «" + f.title + "» بیشتر بدانم و از کجا شروع کنم.";
+      input && input.focus();
+    });
+  }
+  function closeFieldModal() { $("#fieldModal").classList.remove("open"); }
+  $("#fieldModal").addEventListener("click", (e) => { if (e.target.id === "fieldModal") closeFieldModal(); });
+
+  /* ----------------------- ARTICLE MODAL (overlay/esc) ----------------------- */
+  $("#articleModal").addEventListener("click", (e) => { if (e.target.id === "articleModal") closeArticleModal(); });
+
+  /* ----------------------- WELCOME MODAL ----------------------- */
+  function closeWelcomeModal() { $("#welcomeModal").classList.remove("open"); }
+  $("#welcomeModal").addEventListener("click", (e) => { if (e.target.id === "welcomeModal") closeWelcomeModal(); });
+  $("#welcomeCloseBtn").addEventListener("click", closeWelcomeModal);
+  $("#welcomeStartBtn").addEventListener("click", closeWelcomeModal);
+
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeFieldModal(); closeArticleModal(); closeWelcomeModal(); } });
+
+  /* ----------------------- RENDER: ROADMAP / SKILLS / ARTICLES ----------------------- */
+  function renderRoadmap() {
+    const list = $("#roadmapList");
+    const fa = ["۱","۲","۳","۴","۵","۶","۷","۸","۹","۱۰"];
+    list.innerHTML = state.roadmap.map((r, i) => `
+      <div class="road-step">
+        <div class="road-num">${fa[i] || (i+1)}</div>
+        <div class="road-content"><h4>${esc(r.t)}</h4><p>${esc(r.d)}</p></div>
+      </div>
+    `).join("");
+  }
+
+  function renderSkills() {
+    $("#skillsGrid").innerHTML = state.skills.map(s => `
+      <div class="mini-card"><b>${esc(s.t)}</b><span>${esc(s.s)}</span></div>
+    `).join("");
+  }
+
+  function renderArticles() {
+    $("#articlesGrid").innerHTML = state.articles.map(a => `
+      <div class="article-card" data-open-article="${esc(a.id)}" role="button" tabindex="0">
+        <span class="tag">${esc(a.tag)}</span>
+        <h4>${esc(a.title)}</h4>
+        <p>${esc(a.text)}</p>
+        <span class="article-more">مطالعه کامل مقاله ←</span>
+      </div>
+    `).join("");
+    $$("[data-open-article]").forEach(card => {
+      const open = () => openArticleModal(card.getAttribute("data-open-article"));
+      card.addEventListener("click", open);
+      card.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+    });
+  }
+
+  function findArticle(id) { return state.articles.find(a => a.id === id); }
+
+  function openArticleModal(id) {
+    const a = findArticle(id);
+    if (!a) return;
+    const box = $("#articleModalBox");
+    box.innerHTML = `
+      <button class="modal-close" id="articleCloseBtn" aria-label="بستن">✕</button>
+      <span class="field-tag">${esc(a.tag)}</span>
+      <h3>${esc(a.title)}</h3>
+      ${(a.content || [a.text]).map(p => `<p>${esc(p)}</p>`).join("")}
+    `;
+    $("#articleModal").classList.add("open");
+    $("#articleCloseBtn").addEventListener("click", closeArticleModal);
+  }
+  function closeArticleModal() { $("#articleModal").classList.remove("open"); }
+
+  /* ----------------------- RENDER: FAQ ----------------------- */
+  function renderFaq() {
+    const list = $("#faqList");
+    list.innerHTML = state.faq.map(item => `
+      <div class="faq-item" data-id="${item.id}">
+        <div class="faq-q"><span>${esc(item.q)}</span><span class="plus">+</span></div>
+        <div class="faq-a"><p>${esc(item.a)}</p></div>
+      </div>
+    `).join("");
+    $$(".faq-q", list).forEach(q => {
+      q.addEventListener("click", () => {
+        const item = q.closest(".faq-item");
+        const wasOpen = item.classList.contains("open");
+        $$(".faq-item", list).forEach(i => { i.classList.remove("open"); i.querySelector(".faq-a").style.maxHeight = null; });
+        if (!wasOpen) {
+          item.classList.add("open");
+          const a = item.querySelector(".faq-a");
+          a.style.maxHeight = a.scrollHeight + 60 + "px";
+        }
+      });
+    });
+  }
+
+  /* ----------------------- QUIZ ----------------------- */
+  const quizState = { index: 0, scores: {} };
+
+  function resetQuiz() {
+    quizState.index = 0;
+    quizState.scores = {};
+    state.fields.forEach(f => quizState.scores[f.id] = 0);
+    renderQuizStep();
+  }
+
+  function renderQuizStep() {
+    const card = $("#quizCard");
+    const total = state.quiz.length;
+
+    if (quizState.index >= total) {
+      // compute best field
+      let bestId = null, bestScore = -1;
+      Object.entries(quizState.scores).forEach(([id, score]) => {
+        if (score > bestScore) { bestScore = score; bestId = id; }
+      });
+      const f = findField(bestId) || state.fields[0];
+      card.innerHTML = `
+        <div class="quiz-result reveal">
+          <span class="field-tag">پیشنهاد هاب‌کام</span>
+          <div class="modal-icon-wrap" style="--field-c1:${f.c1};--field-c2:${f.c2};margin:0 auto 6px;${fieldMediaStyle(f)}" role="img" aria-label="${esc(f.title)}">${fieldMediaContent(f)}</div>
+          <h3>مسیر پیشنهادی شما: ${esc(f.title)}</h3>
+          <p>${esc(f.desc)}</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <button class="btn btn-primary" id="quizSeeField">مشاهده جزئیات این رشته</button>
+            <button class="btn btn-ghost" id="quizRestart">شروع دوباره آزمون</button>
+          </div>
+        </div>
+      `;
+      $("#quizSeeField").addEventListener("click", () => openFieldModal(f.id));
+      $("#quizRestart").addEventListener("click", resetQuiz);
+      return;
+    }
+
+    const q = state.quiz[quizState.index];
+    card.innerHTML = `
+      <div class="quiz-progress">
+        ${state.quiz.map((_, i) => `<i class="${i < quizState.index ? 'done' : ''}"></i>`).join("")}
+      </div>
+      <div class="quiz-q reveal">${esc(q.q)}</div>
+      <div class="quiz-options">
+        ${q.options.map((opt, i) => `<button class="quiz-opt" data-i="${i}">${esc(opt.text)}</button>`).join("")}
+      </div>
+      <div class="quiz-nav">
+        <span style="color:var(--text-faint);font-size:.85rem;">سوال ${toFa(quizState.index + 1)} از ${toFa(total)}</span>
+        ${quizState.index > 0 ? '<button class="btn btn-ghost btn-sm" id="quizBack">بازگشت</button>' : '<span></span>'}
+      </div>
+    `;
+
+    $$(".quiz-opt", card).forEach(btn => {
+      btn.addEventListener("click", () => {
+        const opt = q.options[Number(btn.getAttribute("data-i"))];
+        if (quizState.scores[opt.field] === undefined) quizState.scores[opt.field] = 0;
+        quizState.scores[opt.field]++;
+        quizState.index++;
+        renderQuizStep();
+      });
+    });
+    const backBtn = $("#quizBack", card);
+    if (backBtn) backBtn.addEventListener("click", () => { quizState.index = Math.max(0, quizState.index - 1); renderQuizStep(); });
+  }
+
+  function toFa(n) {
+    const map = ["۰","۱","۲","۳","۴","۵","۶","۷","۸","۹"];
+    return String(n).split("").map(c => map[c] || c).join("");
+  }
+
+  /* ----------------------- CONSULTATION FORM ----------------------- */
+  const ADMIN_TELEGRAM = "M_17_m17";
+
+  function buildConsultTelegramLink(entry) {
+    const lines = [
+      "درخواست مشاوره از سایت هاب‌کام",
+      "نام: " + entry.name,
+      "راه ارتباطی: " + entry.contact,
+      "موضوع: " + entry.topic,
+      "رشته مورد نظر: " + entry.field,
+      "توضیحات: " + (entry.message || "—")
+    ];
+    const text = lines.join("\n");
+    return "https://t.me/" + ADMIN_TELEGRAM + "?text=" + encodeURIComponent(text);
+  }
+
+  /* ----------------------- SMART ADVISOR (rule-based, offline) -----------------------
+     NOTE: This assistant does NOT call any external AI API (no ChatGPT/Claude/etc).
+     It matches keywords in the user's message against this site's own field data
+     and replies with a tailored suggestion + roadmap, entirely in the browser.
+     ------------------------------------------------------------------------------- */
+  const ADVISOR_KEYWORDS = {
+    "software-eng": ["برنامه نویس", "برنامه‌نویس", "اپلیکیشن", "اپ ساز", "اپ‌ساز", "نرم افزار", "نرم‌افزار", "کدنویسی", "کد زدن", "کد بزنم", "بازی ساز", "بازی‌ساز", "بازی‌سازی", "گیم", "game"],
+    "web-dev": ["وب‌سایت", "وب سایت", "سایت بسازم", "فرانت", "بک‌اند", "بکند", "html", "css", "javascript", "جاوااسکریپت", "طراحی سایت", "فروشگاه اینترنتی", "طراحی رابط کاربری", "ui", "ux"],
+    "ai-ml": ["هوش مصنوعی", "یادگیری ماشین", "ماشین لرنینگ", "چت بات", "چت‌بات", "شبکه عصبی", "یادگیری عمیق", " ai ", "ai."],
+    "data-science": ["علم داده", "تحلیل داده", "داده کاو", "دیتا ساینس", "آمار", "اکسل پیشرفته"],
+    "network-security": ["امنیت", "هک", "هکر", "نفوذ", "سایبری", "cyber", "ویروس", "آنتی ویروس"],
+    "hardware": ["سخت افزار", "سخت‌افزار", "الکترونیک", "تعمیر کامپیوتر", "قطعات کامپیوتر", "میکروکنترلر", "آردوینو", "arduino"],
+    "cs": ["ریاضی", "الگوریتم", "پژوهش دانشگاهی", "علوم کامپیوتر", "تئوری محاسبات"]
+  };
+  const ADVISOR_SPECIAL_NOTES = {
+    "software-eng": (t) => /بازی|گیم|game/i.test(t)
+      ? "راستش بازی‌سازی یک رشته جدا نیست، بلکه معمولاً به‌عنوان یکی از شاخه‌های تخصصی «مهندسی نرم‌افزار» دنبال می‌شود؛ یعنی اول مبانی برنامه‌نویسی و بعد موتورهای بازی (مثل Unity یا Unreal) را یاد می‌گیرید. "
+      : ""
+  };
+
+  function matchAdvisorFields(text) {
+    const t = text.toLowerCase();
+    const scores = {};
+    Object.keys(ADVISOR_KEYWORDS).forEach(id => {
+      let score = 0;
+      ADVISOR_KEYWORDS[id].forEach(kw => { if (t.indexOf(kw.toLowerCase()) !== -1) score++; });
+      if (score > 0) scores[id] = score;
+    });
+    return Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+  }
+
+  let lastMatchedFieldTitle = "";
+
+  const FUNDAMENTALS_KEYWORDS = [
+    ["کامپیوتر چیست", "کامپیوتر یعنی", "تعریف کامپیوتر"],
+    ["سخت افزار چیست", "سخت‌افزار چیست", "تعریف سخت‌افزار", "تعریف سخت افزار"],
+    ["نرم افزار چیست", "نرم‌افزار چیست", "تعریف نرم‌افزار"],
+    ["سیستم عامل", "سیستم‌عامل"],
+    ["اینترنت چگونه", "اینترنت چطور", "اینترنت چیست", "اینترنت چجوری"],
+    ["برنامه نویسی چیست", "برنامه‌نویسی چیست", "کدنویسی چیست", "برنامه‌نویسی یعنی"],
+    ["داده چیست", "دیتا چیست", "تعریف داده"],
+    ["شبکه چیست", "تعریف شبکه"],
+    ["امنیت سایبری", "امنیت سایبر", "سایبری چیست"],
+    ["هوش مصنوعی چیست", "تعریف هوش مصنوعی"]
+  ];
+  function matchFundamentalsTopic(text) {
+    const t = text.toLowerCase();
+    for (let i = 0; i < FUNDAMENTALS_KEYWORDS.length; i++) {
+      if (FUNDAMENTALS_KEYWORDS[i].some(kw => t.indexOf(kw) !== -1)) return state.fundamentals[i];
+    }
+    return null;
+  }
+
+  function smartAdvisorReply(text) {
+    const fund = matchFundamentalsTopic(text);
+    if (fund) {
+      return `${fund.text}\n\nاگه دوست دارید عمیق‌تر وارد این حوزه بشید، می‌تونید بگید به کدوم رشته دنیای کامپیوتر علاقه دارید تا مسیر شغلی مناسب رو هم پیشنهاد بدم.`;
+    }
+    const matchedIds = matchAdvisorFields(text);
+    if (!matchedIds.length) {
+      return "متوجه نشدم دقیقاً به چه حوزه‌ای علاقه دارید 🙂 می‌تونید کمی دقیق‌تر بنویسید (مثلاً «به طراحی سایت علاقه دارم» یا «دوست دارم هکر بشم»)، یا از بخش «کدام رشته برای من مناسب است؟» یک آزمون کوتاه بزنید تا مسیر مناسب‌تون رو پیدا کنیم.";
+    }
+    const f = findField(matchedIds[0]);
+    if (!f) return "متاسفانه اطلاعاتی برای این حوزه پیدا نکردم؛ لطفاً سوال را جور دیگری بپرسید.";
+    lastMatchedFieldTitle = f.title;
+    const note = (ADVISOR_SPECIAL_NOTES[f.id] && ADVISOR_SPECIAL_NOTES[f.id](text)) || "";
+    const steps = (f.curriculum || []).slice(0, 4);
+    let reply = note + `به‌نظرم مسیر «${f.title}» برای شما مناسب باشه. ${f.desc}\n\nبرای شروع، این قدم‌ها رو به ترتیب دنبال کنید:\n`;
+    steps.forEach((s, i) => { reply += `${toFa(i + 1)}) ${s}\n`; });
+    reply += `\nمی‌تونید جزئیات کامل این رشته (همه سرفصل‌ها و کاربردها) رو هم از بخش «رشته‌های دنیای کامپیوتر» بالای صفحه ببینید.`;
+    if (matchedIds.length > 1) {
+      const alt = findField(matchedIds[1]);
+      if (alt) reply += ` یه‌کم هم به «${alt.title}» نزدیک بود، اگه دوست داشتید اونو هم بررسی کنید.`;
+    }
+    return reply;
+  }
+
+  let chatMessages = [];
+
+  function chatTranscriptText() {
+    return chatMessages.map(m => (m.role === "user" ? "کاربر: " : "دستیار: ") + m.text).join("\n");
+  }
+
+  function appendChatMessage(role, text) {
+    chatMessages.push({ role, text });
+    const win = $("#chatWindow");
+    const bubble = document.createElement("div");
+    bubble.className = "chat-msg " + (role === "user" ? "msg-user" : "msg-bot");
+    bubble.textContent = text;
+    win.appendChild(bubble);
+    win.scrollTop = win.scrollHeight;
+  }
+
+  function askAdvisor(questionText) {
+    appendChatMessage("user", questionText);
+    const win = $("#chatWindow");
+    const typing = document.createElement("div");
+    typing.className = "chat-msg msg-bot msg-typing";
+    typing.textContent = "در حال تایپ...";
+    win.appendChild(typing);
+    win.scrollTop = win.scrollHeight;
+    setTimeout(() => {
+      typing.remove();
+      appendChatMessage("bot", smartAdvisorReply(questionText));
+    }, 500);
+  }
+
+  function initSmartAdvisor() {
+    appendChatMessage("bot", "سلام! من دستیار هوشمند هاب‌کام هستم 👋 بگید به چی علاقه دارید یا چه سوالی دارید، تا مسیر مناسب و قدم‌های شروع رو پیشنهاد بدم.");
+
+    $("#chatForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const input = $("#chatInput");
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = "";
+      askAdvisor(text);
+    });
+
+    $("#chatHumanBtn").addEventListener("click", () => {
+      $("#chatHumanForm").style.display = $("#chatHumanForm").style.display === "none" ? "block" : "none";
+    });
+
+    $("#chatHumanSubmitBtn").addEventListener("click", async () => {
+      const name = $("#cName").value.trim();
+      const contact = $("#cContact").value.trim();
+      if (!name || !contact) { alert("لطفاً نام و راه ارتباطی را وارد کنید."); return; }
+      const entry = {
+        name, contact,
+        topic: "مشاور هوشمند (چت)",
+        field: lastMatchedFieldTitle || "نامشخص",
+        message: chatTranscriptText() || "—",
+        date: new Date().toLocaleString("fa-IR")
+      };
+      try {
+        const res = await fetch("/api/submissions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(entry)
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.ok) {
+          $("#chatHumanCta").style.display = "none";
+          $("#formSuccess").classList.add("show");
+          $("#formMailBtn").href = buildConsultTelegramLink(entry);
+        } else {
+          alert(data.error || "ثبت درخواست ناموفق بود، دوباره امتحان کنید.");
+        }
+      } catch (e) {
+        alert("ارتباط با سرور برقرار نشد. لطفاً از دکمه «ارسال در تلگرام» استفاده کنید یا بعداً دوباره امتحان کنید.");
+      }
+    });
+  }
+
+  /* ----------------------- MOBILE NAV ----------------------- */
+  function initMobileNav() {
+    const nav = $("#mobileNav");
+    $("#navToggle").addEventListener("click", () => nav.classList.add("open"));
+    $("#navClose").addEventListener("click", () => nav.classList.remove("open"));
+    $$("#mobileNav a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
+  }
+
+  /* =========================================================
+     ADMIN PANEL
+     ========================================================= */
+  async function goToAdmin() {
+    $("#public-view").classList.add("hidden");
+    $("#admin-view").classList.add("open");
+    window.scrollTo(0, 0);
+    if (state.isLoggedIn) {
+      showAdminDashboard();
+      return;
+    }
+    try {
+      const res = await fetch("/api/me", { credentials: "include" });
+      if (res.ok) {
+        state.isLoggedIn = true;
+        showAdminDashboard();
+        return;
+      }
+    } catch (e) { /* server unreachable — fall through to login form */ }
+    $("#adminLoginWrap").style.display = "flex";
+    $("#adminShell").style.display = "none";
+  }
+
+  async function exitAdmin() {
+    state.isLoggedIn = false;
+    $("#admin-view").classList.remove("open");
+    $("#public-view").classList.remove("hidden");
+    window.scrollTo(0, 0);
+    try {
+      await fetch("/api/logout", { method: "POST", credentials: "include" });
+    } catch (e) { /* ignore — cookie will simply expire on its own */ }
+  }
+
+  async function showAdminDashboard() {
+    $("#adminLoginWrap").style.display = "none";
+    $("#adminShell").style.display = "flex";
+    fillGeneralForm();
+    renderAdminFields();
+    renderAdminFaq();
+    await fetchSubmissions();
+    renderAdminSubs();
+  }
+
+  function initAdminLogin() {
+    $("#adminLoginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const val = $("#adminPass").value;
+      const errBox = $("#adminError");
+      errBox.classList.remove("show");
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ password: val })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.ok) {
+          state.isLoggedIn = true;
+          $("#adminPass").value = "";
+          showAdminDashboard();
+        } else {
+          errBox.textContent = data.error || "رمز عبور نادرست است.";
+          errBox.classList.add("show");
+        }
+      } catch (err) {
+        errBox.textContent = "ارتباط با سرور برقرار نشد. مطمئن شوید بک‌اند در حال اجراست.";
+        errBox.classList.add("show");
+      }
+    });
+  }
+
+  function initAdminNav() {
+    $$("#adminNav button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        $$("#adminNav button").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const target = btn.getAttribute("data-panel");
+        $$(".admin-panel-section").forEach(s => s.classList.remove("active"));
+        $("#" + target).classList.add("active");
+        $("#adminPanelTitle").textContent = btn.textContent.replace(/^\S+\s/, "");
+        $("#adminSide").classList.remove("open");
+      });
+    });
+  }
+
+  function flashSaved() {
+    saveState();
+    const msg = $("#adminSaveMsg");
+    msg.classList.add("show");
+    setTimeout(() => msg.classList.remove("show"), 1600);
+  }
+
+  /* ---- General content panel ---- */
+  function fillGeneralForm() {
+    $("#adm_heroTitle").value = state.hero.title;
+    $("#adm_heroSubtitle").value = state.hero.subtitle;
+    $("#adm_cta1").value = state.hero.cta1;
+    $("#adm_cta2").value = state.hero.cta2;
+    $("#adm_cta3").value = state.hero.cta3;
+  }
+  function initGeneralPanel() {
+    $("#saveGeneralBtn").addEventListener("click", () => {
+      state.hero.title = $("#adm_heroTitle").value.trim() || state.hero.title;
+      state.hero.subtitle = $("#adm_heroSubtitle").value.trim() || state.hero.subtitle;
+      state.hero.cta1 = $("#adm_cta1").value.trim() || state.hero.cta1;
+      state.hero.cta2 = $("#adm_cta2").value.trim() || state.hero.cta2;
+      state.hero.cta3 = $("#adm_cta3").value.trim() || state.hero.cta3;
+      renderHero();
+      flashSaved();
+    });
+  }
+
+  /* ---- Fields panel ---- */
+  function renderAdminFields() {
+    $("#adminFieldsList").innerHTML = state.fields.map(f => `
+      <div class="admin-list-item">
+        <span class="emoji" style="--field-c1:${f.c1};--field-c2:${f.c2};${fieldMediaStyle(f)}">${fieldMediaContent(f)}</span>
+        <div class="info"><b>${esc(f.title)}</b><span>${esc(f.suitability)}</span></div>
+        <div class="actions">
+          <button class="icon-btn" data-edit-field="${f.id}" title="ویرایش">✎</button>
+          <button class="icon-btn del" data-del-field="${f.id}" title="حذف">🗑</button>
+        </div>
+      </div>
+    `).join("") || `<p style="color:var(--text-faint);">هنوز رشته‌ای ثبت نشده است.</p>`;
+
+    $$("[data-edit-field]").forEach(b => b.addEventListener("click", () => editField(b.getAttribute("data-edit-field"))));
+    $$("[data-del-field]").forEach(b => b.addEventListener("click", () => deleteField(b.getAttribute("data-del-field"))));
+  }
+
+  function editField(id) {
+    const f = findField(id);
+    if (!f) return;
+    $("#f_id").value = f.id;
+    $("#f_emoji").value = f.emoji;
+    $("#f_image").value = f.image || "";
+    $("#f_title").value = f.title;
+    $("#f_desc").value = f.desc;
+    $("#f_apps").value = f.apps.join("، ");
+    $("#f_suit").value = f.suitability;
+    $("#f_curriculum").value = (f.curriculum || []).join("\n");
+    $("#fieldSubmitBtn").textContent = "ذخیره ویرایش";
+    $("#fieldCancelBtn").style.display = "inline-flex";
+    $("#panel-fields").scrollIntoView({ behavior: "smooth" });
+  }
+
+  function resetFieldForm() {
+    $("#fieldForm").reset();
+    $("#f_id").value = "";
+    $("#fieldSubmitBtn").textContent = "افزودن رشته";
+    $("#fieldCancelBtn").style.display = "none";
+  }
+
+  function deleteField(id) {
+    if (!confirm("آیا از حذف این رشته مطمئن هستید؟")) return;
+    state.fields = state.fields.filter(f => f.id !== id);
+    renderAdminFields();
+    renderFields();
+    flashSaved();
+  }
+
+  function initFieldForm() {
+    $("#fieldForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = $("#f_id").value;
+      const apps = $("#f_apps").value.split(/[،,]/).map(s => s.trim()).filter(Boolean);
+      const curriculum = $("#f_curriculum").value.split("\n").map(s => s.trim()).filter(Boolean);
+      const palette = [["#1f4fd6","#49d3ff"],["#7c6bff","#49d3ff"],["#4ee6a0","#1f4fd6"],["#ffb84e","#7c6bff"]];
+      if (id) {
+        const f = findField(id);
+        f.emoji = $("#f_emoji").value.trim();
+        f.image = $("#f_image").value.trim();
+        f.title = $("#f_title").value.trim();
+        f.desc = $("#f_desc").value.trim();
+        f.apps = apps.length ? apps : f.apps;
+        f.suitability = $("#f_suit").value.trim();
+        f.curriculum = curriculum.length ? curriculum : f.curriculum;
+      } else {
+        const rnd = palette[state.fields.length % palette.length];
+        state.fields.push({
+          id: "field-" + uid(),
+          emoji: $("#f_emoji").value.trim() || "💡",
+          image: $("#f_image").value.trim(),
+          title: $("#f_title").value.trim(),
+          desc: $("#f_desc").value.trim(),
+          apps: apps.length ? apps : ["—"],
+          suitability: $("#f_suit").value.trim() || "برای علاقه‌مندان به فناوری",
+          curriculum: curriculum,
+          c1: rnd[0], c2: rnd[1]
+        });
+      }
+      resetFieldForm();
+      renderAdminFields();
+      renderFields();
+      flashSaved();
+    });
+    $("#fieldCancelBtn").addEventListener("click", resetFieldForm);
+  }
+
+  /* ---- FAQ panel ---- */
+  function renderAdminFaq() {
+    $("#adminFaqList").innerHTML = state.faq.map(q => `
+      <div class="admin-list-item">
+        <span class="emoji">❓</span>
+        <div class="info"><b>${esc(q.q)}</b></div>
+        <div class="actions">
+          <button class="icon-btn" data-edit-faq="${q.id}" title="ویرایش">✎</button>
+          <button class="icon-btn del" data-del-faq="${q.id}" title="حذف">🗑</button>
+        </div>
+      </div>
+    `).join("") || `<p style="color:var(--text-faint);">هنوز سوالی ثبت نشده است.</p>`;
+
+    $$("[data-edit-faq]").forEach(b => b.addEventListener("click", () => editFaq(Number(b.getAttribute("data-edit-faq")))));
+    $$("[data-del-faq]").forEach(b => b.addEventListener("click", () => deleteFaq(Number(b.getAttribute("data-del-faq")))));
+  }
+
+  function editFaq(id) {
+    const item = state.faq.find(q => q.id === id);
+    if (!item) return;
+    $("#q_id").value = item.id;
+    $("#q_q").value = item.q;
+    $("#q_a").value = item.a;
+    $("#faqSubmitBtn").textContent = "ذخیره ویرایش";
+    $("#faqCancelBtn").style.display = "inline-flex";
+  }
+
+  function resetFaqForm() {
+    $("#faqForm").reset();
+    $("#q_id").value = "";
+    $("#faqSubmitBtn").textContent = "افزودن سوال";
+    $("#faqCancelBtn").style.display = "none";
+  }
+
+  function deleteFaq(id) {
+    if (!confirm("آیا از حذف این سوال مطمئن هستید؟")) return;
+    state.faq = state.faq.filter(q => q.id !== id);
+    renderAdminFaq();
+    renderFaq();
+    flashSaved();
+  }
+
+  function initFaqForm() {
+    $("#faqForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = $("#q_id").value;
+      if (id) {
+        const item = state.faq.find(q => q.id === Number(id));
+        item.q = $("#q_q").value.trim();
+        item.a = $("#q_a").value.trim();
+      } else {
+        state.faq.push({ id: uid(), q: $("#q_q").value.trim(), a: $("#q_a").value.trim() });
+      }
+      resetFaqForm();
+      renderAdminFaq();
+      renderFaq();
+      flashSaved();
+    });
+    $("#faqCancelBtn").addEventListener("click", resetFaqForm);
+  }
+
+  /* ---- Submissions panel ---- */
+  function renderAdminSubs() {
+    const wrap = $("#adminSubsList");
+    if (!state.submissions.length) {
+      wrap.innerHTML = `<div class="subs-empty">هنوز درخواست مشاوره‌ای ثبت نشده است.</div>`;
+      return;
+    }
+    wrap.innerHTML = state.submissions.map(s => `
+      <div class="sub-card">
+        <div class="row"><b>${esc(s.name)}</b><span class="meta">${esc(s.date || s.created_at)}</span></div>
+        <div class="row" style="margin-bottom:10px;">
+          <span class="meta">${esc(s.contact)}</span>
+          <span class="meta">موضوع: ${esc(s.topic)} • رشته: ${esc(s.field)}</span>
+        </div>
+        <p>${esc(s.message) || "—"}</p>
+      </div>
+    `).join("");
+  }
+
+  /* ---- Settings panel: change password ---- */
+  function initSettingsPanel() {
+    $("#pwSaveBtn").addEventListener("click", async () => {
+      const cur = $("#pw_current").value;
+      const next = $("#pw_new").value;
+      const conf = $("#pw_confirm").value;
+      const err = $("#pwError");
+      err.classList.remove("show");
+
+      if (next.length < 8) {
+        err.textContent = "رمز عبور جدید باید حداقل ۸ کاراکتر باشد.";
+        err.classList.add("show");
+        return;
+      }
+      if (next !== conf) {
+        err.textContent = "تکرار رمز عبور با رمز جدید یکسان نیست.";
+        err.classList.add("show");
+        return;
+      }
+      try {
+        const res = await fetch("/api/password", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ currentPassword: cur, newPassword: next })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.ok) {
+          $("#pw_current").value = "";
+          $("#pw_new").value = "";
+          $("#pw_confirm").value = "";
+          const msg = $("#adminSaveMsg");
+          msg.classList.add("show");
+          setTimeout(() => msg.classList.remove("show"), 1600);
+        } else {
+          err.textContent = data.error || "رمز عبور فعلی نادرست است.";
+          err.classList.add("show");
+        }
+      } catch (e) {
+        err.textContent = "ارتباط با سرور برقرار نشد.";
+        err.classList.add("show");
+      }
+    });
+  }
+
+  /* ----------------------- INIT ----------------------- */
+  async function init() {
+    await loadState();
+
+    renderHero();
+    renderFundamentals();
+    renderFields();
+    renderFaq();
+    renderRoadmap();
+    renderSkills();
+    renderArticles();
+    resetQuiz();
+    initSmartAdvisor();
+    initMobileNav();
+
+    $("#adminEntryLink").addEventListener("click", (e) => { e.preventDefault(); goToAdmin(); });
+    $("#adminEntryLinkMobile").addEventListener("click", (e) => { e.preventDefault(); $("#mobileNav").classList.remove("open"); goToAdmin(); });
+    $("#adminHome").addEventListener("click", (e) => { e.preventDefault(); exitAdmin(); });
+    $("#adminExit").addEventListener("click", (e) => { e.preventDefault(); exitAdmin(); });
+    $("#backToSiteLink").addEventListener("click", (e) => { e.preventDefault(); exitAdmin(); });
+
+    initAdminLogin();
+    initAdminNav();
+    initGeneralPanel();
+    initFieldForm();
+    initFaqForm();
+    initSettingsPanel();
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
+
+</script>
+</body>
+</html>
